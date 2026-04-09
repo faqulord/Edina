@@ -4,599 +4,683 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sztojka Edina – Utolsó Padban Alapítvány</title>
-  <meta
-    name="description"
-    content="Sztojka Edina – Utolsó Padban Alapítvány hivatalos weboldala."
-  />
+  <meta name="description" content="Sztojka Edina – Utolsó Padban Alapítvány hivatalos weboldala." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg: #f6f2ea;
-      --bg-soft: #efe7da;
-      --surface: rgba(255, 255, 255, 0.72);
-      --surface-strong: rgba(255, 255, 255, 0.88);
-      --text: #121212;
-      --muted: #5f5a52;
-      --gold: #b99255;
-      --gold-soft: #d8be8a;
-      --line: rgba(18, 18, 18, 0.08);
-      --shadow: 0 18px 60px rgba(0, 0, 0, 0.10);
-      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
-      --radius-xl: 34px;
-      --radius-lg: 26px;
-      --radius-md: 18px;
-      --max: 1260px;
+    :root{
+      --bg:#f6f3ea;
+      --white:#ffffff;
+      --black:#0f0f10;
+      --black-soft:#171719;
+      --text:#141414;
+      --muted:#66615a;
+      --yellow:#ffd84d;
+      --yellow-2:#ffe680;
+      --line:rgba(20,20,20,0.08);
+      --shadow:0 18px 50px rgba(0,0,0,0.10);
+      --shadow-dark:0 18px 50px rgba(0,0,0,0.22);
+      --radius-xl:34px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --max:1280px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html{
+      scroll-behavior:smooth;
     }
 
-    body {
-      font-family: "Inter", sans-serif;
-      color: var(--text);
+    body{
+      font-family:"Manrope",sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(185, 146, 85, 0.10), transparent 24%),
-        linear-gradient(180deg, #faf7f1 0%, var(--bg) 100%);
-      line-height: 1.6;
-      overflow-x: hidden;
+        radial-gradient(circle at top left, rgba(255,216,77,0.18), transparent 20%),
+        linear-gradient(180deg,#faf8f1 0%, var(--bg) 100%);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    img{
+      display:block;
+      max-width:100%;
     }
 
-    .container {
-      width: min(calc(100% - 28px), var(--max));
-      margin: 0 auto;
+    .container{
+      width:min(calc(100% - 28px), var(--max));
+      margin:0 auto;
     }
 
-    .serif {
-      font-family: "Cormorant Garamond", serif;
+    .serif{
+      font-family:"Playfair Display",serif;
     }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(246, 242, 234, 0.78);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(18, 18, 18, 0.05);
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(250,248,241,0.84);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(0,0,0,0.05);
     }
 
-    .nav {
-      min-height: 84px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+    .nav{
+      min-height:84px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      flex-shrink: 0;
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      flex-shrink:0;
     }
 
-    .brand strong {
-      font-size: 1.05rem;
-      font-weight: 800;
-      letter-spacing: 0.01em;
+    .brand strong{
+      font-size:1.02rem;
+      font-weight:800;
+      letter-spacing:0.01em;
     }
 
-    .brand span {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .brand span{
+      font-size:0.78rem;
+      font-weight:700;
+      color:var(--muted);
+      letter-spacing:0.10em;
+      text-transform:uppercase;
     }
 
-    .menu {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .menu a{
+      font-size:0.94rem;
+      font-weight:800;
+      position:relative;
+    }
+
+    .menu a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-7px;
+      width:0;
+      height:3px;
+      border-radius:999px;
+      background:var(--yellow);
+      transition:width .25s ease;
+    }
+
+    .menu a:hover::after{
+      width:100%;
+    }
+
+    .menu-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 18px;
+      border-radius:999px;
+      background:var(--black);
+      color:var(--white);
+      font-weight:800;
+      box-shadow:var(--shadow-dark);
+    }
+
+    section{
+      padding:28px 0;
+    }
+
+    .hero{
+      padding-top:24px;
+    }
+
+    .hero-wrap{
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .hero-left{
+      background:var(--black);
+      color:var(--white);
+      border-radius:var(--radius-xl);
+      padding:48px;
+      min-height:720px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow-dark);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .hero-left::before{
+      content:"";
+      position:absolute;
+      width:240px;
+      height:240px;
+      right:-70px;
+      top:-70px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(255,216,77,0.30), rgba(255,216,77,0));
+      pointer-events:none;
+    }
+
+    .hero-left::after{
+      content:"";
+      position:absolute;
+      width:320px;
+      height:320px;
+      left:-120px;
+      bottom:-140px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(255,255,255,0.08), rgba(255,255,255,0));
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      width:fit-content;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,216,77,0.12);
+      color:var(--yellow);
+      font-size:0.8rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      margin-bottom:20px;
+      border:1px solid rgba(255,216,77,0.18);
+    }
+
+    h1{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(3.3rem,8vw,6.6rem);
+      line-height:0.92;
+      letter-spacing:-0.05em;
+      margin-bottom:20px;
+      max-width:10ch;
+      font-weight:800;
+    }
+
+    .lead{
+      font-size:1.08rem;
+      color:rgba(255,255,255,0.78);
+      max-width:60ch;
+      margin-bottom:30px;
+      font-weight:500;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:32px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 24px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      font-weight:800;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-yellow{
+      background:var(--yellow);
+      color:#111;
+      box-shadow:0 14px 34px rgba(255,216,77,0.28);
+    }
+
+    .btn-outline{
+      background:transparent;
+      color:var(--white);
+      border:1px solid rgba(255,255,255,0.16);
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .hero-point{
+      padding:18px;
+      border-radius:22px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-point strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:0.98rem;
+      color:var(--yellow);
+    }
+
+    .hero-point span{
+      color:rgba(255,255,255,0.72);
+      font-size:0.9rem;
+      font-weight:600;
+    }
+
+    .hero-right{
+      position:relative;
+      min-height:720px;
+      border-radius:var(--radius-xl);
+      overflow:hidden;
+      box-shadow:var(--shadow-dark);
+      background:#ddd;
+    }
+
+    .hero-right img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      left:20px;
+      right:20px;
+      bottom:20px;
+      padding:20px 22px;
+      border-radius:24px;
+      background:rgba(15,15,16,0.56);
+      color:var(--white);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-overlay strong{
+      display:block;
+      margin-bottom:5px;
+      color:var(--yellow);
+      font-size:1rem;
+    }
+
+    .split-intro{
+      display:grid;
+      grid-template-columns:0.85fr 1.15fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .quote-card{
+      background:var(--yellow);
+      color:#111;
+      border-radius:var(--radius-xl);
+      padding:34px;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:320px;
     }
 
-    .menu a {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #222;
-      position: relative;
+    .quote-card .mini{
+      font-size:0.82rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      opacity:0.75;
     }
 
-    .menu a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      transition: width 0.25s ease;
-      border-radius: 999px;
-    }
-
-    .menu a:hover::after {
-      width: 100%;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 24px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      font-weight: 800;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-dark {
-      background: #121212;
-      color: #fff;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
-    }
-
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
-      color: #111;
-      box-shadow: 0 14px 30px rgba(185, 146, 85, 0.24);
-    }
-
-    .btn-light {
-      background: rgba(255, 255, 255, 0.74);
-      border: 1px solid rgba(18, 18, 18, 0.08);
-      color: #111;
-    }
-
-    section {
-      padding: 28px 0;
-    }
-
-    .hero {
-      padding-top: 24px;
-    }
-
-    .hero-wrap {
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .hero-card,
-    .hero-image,
-    .intro-card,
-    .story-card,
-    .donation-main,
-    .donation-side,
-    .footer-box {
-      background: var(--surface);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-    }
-
-    .hero-card {
-      padding: 46px;
-      min-height: 680px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      background:
-        radial-gradient(circle at top right, rgba(185, 146, 85, 0.14), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.70));
-    }
+    .quote-card h2{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2.2rem,5vw,4rem);
+      line-height:0.96;
+      letter-spacing:-0.04em;
+      margin:14px 0;
+    }
 
-    .eyebrow {
-      display: inline-flex;
-      width: fit-content;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(185, 146, 85, 0.12);
-      color: #7d6237;
-      font-size: 0.82rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3.4rem, 8vw, 6.4rem);
-      line-height: 0.9;
-      letter-spacing: -0.05em;
-      margin-bottom: 18px;
-      max-width: 11ch;
-      font-weight: 700;
-    }
-
-    .lead {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 60ch;
-      margin-bottom: 28px;
-      font-weight: 500;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .hero-stat {
-      padding: 18px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.74);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .hero-stat strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-
-    .hero-stat span {
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
+    .quote-card p{
+      font-weight:700;
+      color:#2d2a21;
+    }
 
-    .hero-image {
-      min-height: 680px;
-      position: relative;
+    .story-panel{
+      background:var(--white);
+      border-radius:var(--radius-xl);
+      padding:34px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
     }
 
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .story-panel h3{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2rem,4vw,3.4rem);
+      line-height:0.98;
+      letter-spacing:-0.04em;
+      margin-bottom:14px;
     }
 
-    .hero-overlay {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
-      padding: 20px 22px;
-      border-radius: 24px;
-      background: rgba(16, 16, 16, 0.48);
-      color: white;
-      backdrop-filter: blur(10px);
+    .story-panel p{
+      color:var(--muted);
+      font-weight:600;
+      margin-bottom:14px;
     }
 
-    .hero-overlay strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 4px;
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+      margin-bottom:24px;
     }
 
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 18px;
-      margin-bottom: 24px;
+    .section-head h2{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2.2rem,5vw,3.8rem);
+      line-height:0.95;
+      letter-spacing:-0.04em;
+      max-width:12ch;
     }
 
-    .section-head h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      max-width: 12ch;
-      font-weight: 700;
+    .section-head p{
+      max-width:58ch;
+      color:var(--muted);
+      font-weight:600;
     }
 
-    .section-head p {
-      max-width: 58ch;
-      color: var(--muted);
-      font-weight: 600;
+    .mission-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
     }
 
-    .intro-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .mission-card{
+      border-radius:var(--radius-lg);
+      padding:28px;
+      box-shadow:var(--shadow);
+      min-height:240px;
+      transition:transform .25s ease, box-shadow .25s ease;
     }
 
-    .intro-card {
-      padding: 28px;
-      background: var(--surface-strong);
+    .mission-card:hover{
+      transform:translateY(-4px);
     }
 
-    .intro-card .nr {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      background: #121212;
-      color: #fff;
-      font-weight: 800;
-      margin-bottom: 16px;
+    .mission-card.dark{
+      background:var(--black);
+      color:var(--white);
+      box-shadow:var(--shadow-dark);
     }
 
-    .intro-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 10px;
+    .mission-card.light{
+      background:var(--white);
+      color:var(--text);
+      border:1px solid var(--line);
     }
 
-    .intro-card p {
-      color: var(--muted);
-      font-weight: 500;
+    .mission-card.yellow{
+      background:var(--yellow);
+      color:#111;
     }
 
-    .story-wrap {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 22px;
-      margin-top: 12px;
+    .mission-card .nr{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      margin-bottom:16px;
+      font-weight:800;
+      font-size:1rem;
     }
 
-    .story-image {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      min-height: 520px;
+    .mission-card.dark .nr{
+      background:rgba(255,216,77,0.12);
+      color:var(--yellow);
+      border:1px solid rgba(255,216,77,0.14);
     }
 
-    .story-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .mission-card.light .nr{
+      background:#111;
+      color:#fff;
     }
 
-    .story-card {
-      padding: 38px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background:
-        radial-gradient(circle at top right, rgba(185, 146, 85, 0.10), transparent 24%),
-        rgba(255,255,255,0.76);
+    .mission-card.yellow .nr{
+      background:#111;
+      color:var(--yellow);
     }
 
-    .story-card h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      margin-bottom: 16px;
-      font-weight: 700;
-    }
+    .mission-card h3{
+      margin-bottom:10px;
+      font-size:1.18rem;
+    }
 
-    .story-card p {
-      color: var(--muted);
-      font-weight: 500;
-      margin-bottom: 14px;
-      font-size: 1rem;
+    .mission-card p{
+      font-weight:600;
+      color:inherit;
+      opacity:0.9;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 110px;
-      gap: 18px;
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      grid-auto-rows:110px;
+      gap:18px;
     }
 
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 28px;
-      box-shadow: var(--shadow-soft);
-      background: #e8e1d4;
+    .gallery-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      background:#e7e1d5;
     }
 
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.45s ease;
+    .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .45s ease, filter .45s ease;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.04);
+    .gallery-item:hover img{
+      transform:scale(1.05);
+      filter:contrast(1.04);
     }
 
-    .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 4; }
-    .gallery-item:nth-child(2) { grid-column: span 3; grid-row: span 2; }
-    .gallery-item:nth-child(3) { grid-column: span 4; grid-row: span 2; }
-    .gallery-item:nth-child(4) { grid-column: span 3; grid-row: span 2; }
-    .gallery-item:nth-child(5) { grid-column: span 4; grid-row: span 2; }
-    .gallery-item:nth-child(6) { grid-column: span 5; grid-row: span 2; }
-    .gallery-item:nth-child(7) { grid-column: span 4; grid-row: span 2; }
-    .gallery-item:nth-child(8) { grid-column: span 4; grid-row: span 2; }
+    .gallery-item:nth-child(1){grid-column:span 5;grid-row:span 4;}
+    .gallery-item:nth-child(2){grid-column:span 3;grid-row:span 2;}
+    .gallery-item:nth-child(3){grid-column:span 4;grid-row:span 2;}
+    .gallery-item:nth-child(4){grid-column:span 3;grid-row:span 2;}
+    .gallery-item:nth-child(5){grid-column:span 4;grid-row:span 2;}
+    .gallery-item:nth-child(6){grid-column:span 5;grid-row:span 2;}
+    .gallery-item:nth-child(7){grid-column:span 4;grid-row:span 2;}
+    .gallery-item:nth-child(8){grid-column:span 4;grid-row:span 2;}
 
-    .gallery-caption {
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(16, 16, 16, 0.44);
-      color: white;
-      backdrop-filter: blur(8px);
-      font-size: 0.92rem;
-      font-weight: 700;
+    .gallery-caption{
+      position:absolute;
+      left:14px;
+      right:14px;
+      bottom:14px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:rgba(15,15,16,0.58);
+      color:#fff;
+      backdrop-filter:blur(8px);
+      font-size:0.92rem;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,0.08);
     }
 
-    .donation-wrap {
-      display: grid;
-      grid-template-columns: 1.04fr 0.96fr;
-      gap: 20px;
+    .donation-wrap{
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:20px;
     }
 
-    .donation-main,
-    .donation-side {
-      padding: 34px;
+    .donation-main{
+      background:var(--black);
+      color:var(--white);
+      border-radius:var(--radius-xl);
+      padding:38px;
+      box-shadow:var(--shadow-dark);
+      position:relative;
+      overflow:hidden;
     }
 
-    .donation-main {
-      background:
-        linear-gradient(135deg, #111111 0%, #1b1b1b 100%);
-      color: white;
-      position: relative;
+    .donation-main::before{
+      content:"";
+      position:absolute;
+      width:260px;
+      height:260px;
+      top:-90px;
+      right:-90px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(255,216,77,0.24), rgba(255,216,77,0));
     }
 
-    .donation-main::after {
-      content: "";
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      top: -80px;
-      right: -80px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(185,146,85,0.25), rgba(185,146,85,0));
-      pointer-events: none;
+    .donation-main h3{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2.3rem,5vw,4.2rem);
+      line-height:0.95;
+      letter-spacing:-0.04em;
+      margin-bottom:14px;
+      max-width:12ch;
     }
 
-    .donation-main h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      margin-bottom: 14px;
-      max-width: 12ch;
-      font-weight: 700;
+    .donation-main p{
+      color:rgba(255,255,255,0.82);
+      font-weight:500;
+      margin-bottom:14px;
+      max-width:60ch;
     }
 
-    .donation-main p {
-      color: rgba(255,255,255,0.82);
-      font-weight: 500;
-      max-width: 60ch;
-      margin-bottom: 14px;
+    .tax-box{
+      margin-top:24px;
+      background:var(--yellow);
+      color:#111;
+      padding:22px;
+      border-radius:24px;
+      box-shadow:0 16px 30px rgba(255,216,77,0.18);
     }
 
-    .tax-box {
-      margin-top: 24px;
-      padding: 22px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
+    .tax-box strong{
+      display:block;
+      font-size:1.08rem;
+      margin-bottom:8px;
     }
 
-    .tax-box strong {
-      display: block;
-      font-size: 1.08rem;
-      margin-bottom: 8px;
-      color: var(--gold-soft);
+    .donation-side{
+      background:var(--white);
+      border-radius:var(--radius-xl);
+      padding:30px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
     }
 
-    .donation-side {
-      background: var(--surface-strong);
+    .donation-side h4{
+      font-size:1.18rem;
+      margin-bottom:14px;
     }
 
-    .donation-side h4 {
-      font-size: 1.2rem;
-      margin-bottom: 14px;
+    .data-list{
+      display:grid;
+      gap:12px;
     }
 
-    .data-list {
-      display: grid;
-      gap: 12px;
+    .data-item{
+      padding:16px 18px;
+      border-radius:18px;
+      background:#faf8f1;
+      border:1px solid var(--line);
+      word-break:break-word;
     }
 
-    .data-item {
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.84);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
-      word-break: break-word;
+    .data-item span{
+      display:block;
+      margin-bottom:4px;
+      font-size:0.78rem;
+      font-weight:800;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.08em;
     }
 
-    .data-item span {
-      display: block;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      font-weight: 800;
-      margin-bottom: 5px;
+    .side-cta{
+      margin-top:18px;
     }
 
-    .footer {
-      padding: 24px 0 46px;
+    .footer{
+      padding:24px 0 46px;
     }
 
-    .footer-box {
-      padding: 24px 26px;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-      background: rgba(255,255,255,0.62);
+    .footer-box{
+      background:var(--black);
+      color:var(--white);
+      border-radius:28px;
+      padding:24px 26px;
+      box-shadow:var(--shadow-dark);
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
     }
 
-    .footer-box p {
-      color: var(--muted);
-      font-weight: 600;
+    .footer-box p{
+      color:rgba(255,255,255,0.72);
+      font-weight:600;
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width:1100px){
       .hero-wrap,
-      .story-wrap,
-      .intro-grid,
-      .donation-wrap {
-        grid-template-columns: 1fr;
+      .split-intro,
+      .mission-grid,
+      .donation-wrap{
+        grid-template-columns:1fr;
       }
 
-      .hero-card,
-      .hero-image,
-      .story-image {
-        min-height: auto;
+      .hero-left,
+      .hero-right{
+        min-height:auto;
       }
 
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 230px;
+      .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+        grid-auto-rows:230px;
       }
 
       .gallery-item,
@@ -607,47 +691,48 @@
       .gallery-item:nth-child(5),
       .gallery-item:nth-child(6),
       .gallery-item:nth-child(7),
-      .gallery-item:nth-child(8) {
-        grid-column: auto;
-        grid-row: auto;
+      .gallery-item:nth-child(8){
+        grid-column:auto;
+        grid-row:auto;
       }
     }
 
-    @media (max-width: 760px) {
-      .nav {
-        padding: 14px 0;
-        flex-direction: column;
-        align-items: flex-start;
+    @media (max-width:760px){
+      .nav{
+        padding:14px 0;
+        flex-direction:column;
+        align-items:flex-start;
       }
 
-      .menu {
-        gap: 12px;
+      .menu{
+        gap:12px;
       }
 
-      .hero-card,
-      .story-card,
+      .hero-left,
+      .quote-card,
+      .story-panel,
+      .mission-card,
       .donation-main,
-      .donation-side,
-      .intro-card {
-        padding: 22px;
+      .donation-side{
+        padding:22px;
       }
 
-      .hero-stats {
-        grid-template-columns: 1fr;
+      .hero-points{
+        grid-template-columns:1fr;
       }
 
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 260px;
+      .gallery-grid{
+        grid-template-columns:1fr;
+        grid-auto-rows:260px;
       }
 
-      .section-head {
-        flex-direction: column;
-        align-items: flex-start;
+      .section-head{
+        flex-direction:column;
+        align-items:flex-start;
       }
 
-      h1 {
-        max-width: 100%;
+      h1{
+        max-width:100%;
       }
     }
   </style>
@@ -667,13 +752,15 @@
         <a href="#tamogatas">Támogatás</a>
         <a href="#kapcsolat">Kapcsolat</a>
       </nav>
+
+      <a class="menu-cta" href="#tamogatas">Segítek</a>
     </div>
   </header>
 
   <main id="fooldal">
     <section class="hero">
       <div class="container hero-wrap">
-        <div class="hero-card">
+        <div class="hero-left">
           <div class="eyebrow">Figyelem • Esély • Jelenlét</div>
 
           <h1>Ne maradjon senki az utolsó padban.</h1>
@@ -681,38 +768,68 @@
           <p class="lead">
             A Sztojka Edina – Utolsó Padban Alapítvány azért dolgozik, hogy a
             gyermekek több figyelmet, több lehetőséget és több reményt kapjanak.
-            Egy ügy, ahol a segítség nem távoli szó, hanem valódi jelenlét.
+            Egy ügy, amely nem a háttérben marad, hanem valódi sorsok mellé áll.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-dark" href="#tamogatas">Támogatom az alapítványt</a>
-            <a class="btn btn-light" href="#tortenet">Megismerem a történetet</a>
+            <a class="btn btn-yellow" href="#tamogatas">Támogatom az alapítványt</a>
+            <a class="btn btn-outline" href="#tortenet">Megismerem a történetet</a>
           </div>
 
-          <div class="hero-stats">
-            <div class="hero-stat">
+          <div class="hero-points">
+            <div class="hero-point">
               <strong>Valódi ügy</strong>
-              <span>Emberekről, gyermekekről, jövőkről szól.</span>
+              <span>Gyermekekről, figyelemről és jövőkről szól.</span>
             </div>
-
-            <div class="hero-stat">
+            <div class="hero-point">
               <strong>Hiteles jelenlét</strong>
-              <span>Nem dísz, hanem érzékelhető segítség.</span>
+              <span>A segítség itt nem dísz, hanem kézzelfogható közelség.</span>
             </div>
-
-            <div class="hero-stat">
-              <strong>Bizalom</strong>
-              <span>Egy arc, egy történet, egy fontos küldetés.</span>
+            <div class="hero-point">
+              <strong>Erős üzenet</strong>
+              <span>Senki ne maradjon észrevétlen vagy egyedül.</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-image">
+        <div class="hero-right">
           <img src="images/hero.jpg" alt="Sztojka Edina" />
           <div class="hero-overlay">
             <strong>A jövő ott kezdődik, ahol valaki végre észreveszi a másikat.</strong>
             Egyetlen figyelmes jelenlét is képes irányt változtatni.
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tortenet">
+      <div class="container split-intro">
+        <div class="quote-card">
+          <div class="mini">Utolsó Padban Alapítvány</div>
+          <h2>Nem elég látni a problémát. Oda is kell állni mellé.</h2>
+          <p>
+            Ez az alapítvány azért született, hogy azok a gyermekek is valódi
+            figyelmet és esélyt kapjanak, akik túl gyakran maradnak a háttérben.
+          </p>
+        </div>
+
+        <div class="story-panel">
+          <h3>Amikor valaki felemel másokat, a történet többé nem csak róla szól.</h3>
+          <p>
+            Sztojka Edina neve egy olyan életutat idéz, amelyben a kitartás,
+            az emberség és a tenni akarás egyszerre van jelen. Az Utolsó Padban
+            Alapítvány ennek a szemléletnek a folytatása.
+          </p>
+          <p>
+            Az alapítvány azért jött létre, hogy azok a gyermekek is figyelmet,
+            támogatást és lehetőséget kapjanak, akik sokszor a háttérben maradnak.
+            Akiknek ugyanúgy járna az esély, mégis kevesebb jut belőle.
+          </p>
+          <p>
+            Ez a weboldal is ezt a világot szeretné megmutatni: méltóságot,
+            reményt, emberközelséget és azt a csendes, mégis erős jelenlétet,
+            amely képes ajtókat nyitni a jövő felé.
+          </p>
         </div>
       </div>
     </section>
@@ -727,8 +844,8 @@
           </p>
         </div>
 
-        <div class="intro-grid">
-          <article class="intro-card">
+        <div class="mission-grid">
+          <article class="mission-card dark">
             <div class="nr">01</div>
             <h3>Esélyteremtés</h3>
             <p>
@@ -736,7 +853,7 @@
             </p>
           </article>
 
-          <article class="intro-card">
+          <article class="mission-card yellow">
             <div class="nr">02</div>
             <h3>Közösség</h3>
             <p>
@@ -744,45 +861,13 @@
             </p>
           </article>
 
-          <article class="intro-card">
+          <article class="mission-card light">
             <div class="nr">03</div>
             <h3>Valódi segítség</h3>
             <p>
               Nem puszta mondatokban, hanem jelenlétben, figyelemben és tettekben mérhető.
             </p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="tortenet">
-      <div class="container">
-        <div class="story-wrap">
-          <div class="story-image">
-            <img src="images/edina1.jpg" alt="Sztojka Edina portré" />
-          </div>
-
-          <div class="story-card">
-            <h3>Amikor valaki felemel másokat, a történet többé nem csak róla szól.</h3>
-
-            <p>
-              Sztojka Edina neve egy olyan életutat idéz, amelyben a kitartás,
-              az emberség és a tenni akarás egyszerre van jelen. Az Utolsó Padban
-              Alapítvány ennek a szemléletnek a folytatása.
-            </p>
-
-            <p>
-              Az alapítvány azért jött létre, hogy azok a gyermekek is figyelmet,
-              támogatást és lehetőséget kapjanak, akik sokszor a háttérben maradnak.
-              Akiknek ugyanúgy járna az esély, mégis kevesebb jut belőle.
-            </p>
-
-            <p>
-              Ez a weboldal is ezt a világot szeretné megmutatni: méltóságot,
-              reményt, emberközelséget és azt a halk, mégis erős jelenlétet,
-              amely képes ajtókat nyitni a jövő felé.
-            </p>
-          </div>
         </div>
       </div>
     </section>
@@ -884,8 +969,8 @@
             </div>
           </div>
 
-          <div style="margin-top:18px;">
-            <a class="btn btn-gold" href="#kapcsolat">Kapcsolatfelvétel</a>
+          <div class="side-cta">
+            <a class="btn btn-yellow" href="#kapcsolat">Kapcsolatfelvétel</a>
           </div>
         </div>
       </div>
@@ -897,7 +982,7 @@
       <div class="footer-box">
         <div>
           <strong>Sztojka Edina – Utolsó Padban Alapítvány</strong>
-          <p>Elegáns, letisztult, mobilbarát jelenlét egy fontos ügy mögött.</p>
+          <p>Karakteres, modern, mobilbarát jelenlét egy fontos ügy mögött.</p>
         </div>
 
         <div>
