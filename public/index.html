@@ -14,25 +14,25 @@
 
     <style>
         :root {
-            /* Meleg, barátságos és megbízható színpaletta - KEVEŚEBB FEHÉR */
-            --bg-body: #FAF7F2;         /* Puha, meleg bézs háttér a tiszta fehér helyett */
-            --bg-white: #FFFFFF;        /* Tiszta fehér kártyákhoz */
-            --primary: #0284C7;         /* Megbízható tengerkék */
-            --primary-light: #E0F2FE;   /* Világoskék kiemelésekhez */
-            --primary-dark: #075985;
-            --accent: #F59E0B;          /* Meleg, barátságos borostyán/sárga a gombokhoz */
-            --accent-hover: #D97706;
-            --text-dark: #0F172A;       /* Majdnem fekete, sötétkék a jó olvashatóságért */
-            --text-muted: #475569;      /* Szürke a bekezdésekhez */
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 40px -5px rgba(2, 132, 199, 0.08);
-            --radius-xl: 32px;
+            /* MELEG, ORGANIKUS SZÍNPALETTA - Nincs sterilitás */
+            --bg-body: #FAF4ED;         /* Meleg homokszín alap */
+            --bg-section: #F2E3D5;      /* Kicsit sötétebb, tört bézs a szekciók elkülönítésére */
+            --primary: #D46A4C;         /* Meleg terrakotta / agyag - emberi, barátságos */
+            --primary-light: #FADED5;   /* Halvány terrakotta */
+            --primary-dark: #B35237;    
+            --accent: #E89E2E;          /* Napsárga / meleg okker */
+            --accent-hover: #CC8722;
+            --text-dark: #3E3832;       /* Mély, meleg barnás-szürke (nem rideg fekete) */
+            --text-muted: #7A726A;      /* Meleg szürke */
+            --white: #FFFFFF;
+            
+            --shadow-sm: 0 4px 15px rgba(212, 106, 76, 0.08);
+            --shadow-lg: 0 20px 40px rgba(62, 56, 50, 0.08);
+            --radius-xl: 36px;
             --radius-lg: 24px;
-            --radius-md: 16px;
         }
 
         * { margin: 0; padding: 0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
-        
         html { scroll-behavior: smooth; font-size: 16px; }
 
         body {
@@ -43,46 +43,51 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .logo { font-family: 'Outfit', sans-serif; font-weight: 800; line-height: 1.1; }
+        h1, h2, h3, h4, .logo { font-family: 'Outfit', sans-serif; font-weight: 800; line-height: 1.15; }
 
-        .container { width: min(1200px, 90%); margin: 0 auto; }
+        .container { width: min(1200px, 90%); margin: 0 auto; relative; }
 
-        /* --- Navigáció (Mobilbarát) --- */
+        /* --- Organikus Háttérformák (Blobs) --- */
+        .blob { position: absolute; z-index: -1; filter: blur(60px); opacity: 0.6; }
+        .blob-1 { top: -100px; right: -50px; width: 500px; height: 500px; background: var(--primary-light); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; animation: morph 15s ease-in-out infinite; }
+        .blob-2 { top: 300px; left: -150px; width: 400px; height: 400px; background: rgba(232, 158, 46, 0.2); border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%; animation: morph 20s ease-in-out infinite alternate; }
+
+        @keyframes morph {
+            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+            100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        }
+
+        /* --- Navigáció --- */
         header {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(250, 247, 242, 0.9); /* Meleg háttér */
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,0,0,0.03);
+            background: rgba(250, 244, 237, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(212, 106, 76, 0.1);
             transition: all 0.3s ease;
         }
 
-        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 85px; }
 
-        .logo { font-size: 1.25rem; color: var(--primary); text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
-        .logo span { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; font-family: 'Plus Jakarta Sans', sans-serif; margin-top: 2px; }
+        .logo { font-size: 1.3rem; color: var(--primary-dark); text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+        .logo span { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-top: 4px; letter-spacing: 0.5px; }
 
-        .nav-links { display: flex; gap: 24px; align-items: center; }
-        .nav-links a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Hamburger Ikon */
         .hamburger { display: none; cursor: pointer; background: none; border: none; padding: 10px; z-index: 1100; }
-        .hamburger div { width: 25px; height: 3px; background-color: var(--primary); margin: 5px; transition: all 0.3s ease; border-radius: 3px; }
+        .hamburger div { width: 26px; height: 3px; background-color: var(--primary-dark); margin: 5px; transition: all 0.3s ease; border-radius: 3px; }
 
-        /* Mobil Menü Overlay */
         .mobile-menu {
             position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-            background-color: var(--bg-white);
-            z-index: 1050; display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            gap: 30px; transition: right 0.4s ease; box-shadow: var(--shadow-lg);
+            background-color: var(--bg-body); z-index: 1050; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 35px; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .mobile-menu.active { right: 0; }
-        .mobile-menu a { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-dark); text-decoration: none; }
-        .mobile-menu a:hover { color: var(--primary); }
+        .mobile-menu a { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--text-dark); text-decoration: none; }
 
-        /* Hamburgerr animáció aktív állapotban */
         .hamburger.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
         .hamburger.toggle .line2 { opacity: 0; }
         .hamburger.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
@@ -90,146 +95,156 @@
         /* --- Gombok --- */
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
-            padding: 14px 28px; border-radius: 99px; font-weight: 700;
-            text-decoration: none; transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif; font-size: 1rem; cursor: pointer; border: none;
-            text-align: center;
+            padding: 16px 32px; border-radius: 99px; font-weight: 700; text-decoration: none; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-family: 'Outfit', sans-serif; 
+            font-size: 1.05rem; border: none; text-align: center;
         }
 
-        .btn-accent { background-color: var(--accent); color: #fff; box-shadow: 0 8px 15px rgba(245, 158, 11, 0.2); }
-        .btn-accent:hover { background-color: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 20px rgba(245, 158, 11, 0.3); }
+        .btn-accent { background-color: var(--accent); color: #fff; box-shadow: 0 8px 20px rgba(232, 158, 46, 0.3); }
+        .btn-accent:hover { background-color: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 12px 25px rgba(232, 158, 46, 0.4); }
 
-        .btn-outline { background-color: transparent; color: var(--primary); border: 2px solid var(--primary-light); }
-        .btn-outline:hover { background-color: var(--primary-light); transform: translateY(-2px); }
+        .btn-outline { background-color: var(--white); color: var(--primary-dark); border: 2px solid var(--primary-light); box-shadow: var(--shadow-sm); }
+        .btn-outline:hover { border-color: var(--primary); transform: translateY(-3px); }
 
-        /* --- Hero Section (Mobilbarát) --- */
-        .hero { padding: 140px 0 80px; position: relative; }
-        .hero::before {
-            content: ''; position: absolute; top: -100px; right: -10%; width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--primary-light) 0%, rgba(250,247,242,0) 70%);
-            border-radius: 50%; z-index: -1; opacity: 0.8;
-        }
-
-        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+        /* --- Hero Section --- */
+        .hero { padding: 180px 0 100px; position: relative; overflow: hidden; }
+        .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center; }
 
         .eyebrow {
-            display: inline-block; background: var(--primary-light); color: var(--primary);
-            padding: 6px 12px; border-radius: 99px; font-weight: 700; font-size: 0.85rem; margin-bottom: 20px;
+            display: inline-block; background: var(--white); color: var(--primary);
+            padding: 8px 16px; border-radius: 99px; font-weight: 700; font-size: 0.9rem; 
+            margin-bottom: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--primary-light);
         }
 
-        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: -1px; margin-bottom: 20px; }
-        .hero h1 span { color: var(--primary); }
-
-        .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 35px; max-width: 90%; }
-
-        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
-        .hero-img-wrapper {
-            position: relative; border-radius: var(--radius-xl); padding: 15px;
-            background: var(--bg-white); box-shadow: var(--shadow-lg);
-            transform: rotate(1.5deg); transition: transform 0.5s;
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); letter-spacing: -1px; margin-bottom: 24px; color: var(--text-dark); }
+        .hero h1 span { color: var(--primary); position: relative; display: inline-block; }
+        .hero h1 span::after {
+            content: ''; position: absolute; bottom: 8px; left: 0; width: 100%; height: 12px;
+            background: var(--accent); opacity: 0.3; z-index: -1; border-radius: 10px;
         }
-        .hero-img-wrapper:hover { transform: rotate(0deg); }
-        .hero-img-wrapper img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius-lg); }
 
-        /* Lebegő Statisztika Ikon */
+        .hero p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 40px; max-width: 90%; line-height: 1.7; }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        .hero-img-wrapper { position: relative; padding: 15px; }
+        .hero-img-wrapper img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius-xl) 8px var(--radius-xl) 8px; box-shadow: var(--shadow-lg); }
+
         .floating-stat {
-            position: absolute; bottom: -20px; left: -20px; background: var(--bg-white);
-            padding: 16px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
-            display: flex; align-items: center; gap: 12px;
+            position: absolute; bottom: -20px; left: -30px; background: var(--white);
+            padding: 20px; border-radius: 20px; box-shadow: var(--shadow-lg);
+            display: flex; align-items: center; gap: 16px; border: 1px solid var(--primary-light);
         }
         .floating-stat .icon {
-            width: 40px; height: 40px; background: #FEF3C7; color: var(--accent);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;
+            width: 45px; height: 45px; background: var(--primary-light); color: var(--primary-dark);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px;
         }
 
-        /* --- Misszió (Levegősebb kártyák) --- */
-        .section-padding { padding: 80px 0; }
-        .section-header { text-align: center; max-width: 650px; margin: 0 auto 50px; }
-        .section-header h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 12px; }
+        /* --- Misszió (Színezett háttérrel) --- */
+        .section-mission { padding: 100px 0; background-color: var(--bg-section); position: relative; }
+        /* Díszítő hullám a tetején */
+        .wave-top { position: absolute; top: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; }
+        .wave-top svg { display: block; width: calc(130% + 1.3px); height: 50px; }
+        .wave-top .shape-fill { fill: var(--bg-body); }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 60px; position: relative; z-index: 2; }
+        .section-header h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 16px; color: var(--primary-dark); }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; position: relative; z-index: 2; }
 
         .mission-card {
-            background: var(--bg-white); padding: 35px 28px; border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.02);
-            transition: all 0.3s ease; position: relative; overflow: hidden;
+            background: var(--white); padding: 40px 32px; border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm); border: 2px solid transparent;
+            transition: all 0.4s ease; display: flex; flex-direction: column; height: 100%;
         }
-        .mission-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+        .mission-card:hover { transform: translateY(-8px); border-color: var(--primary-light); box-shadow: var(--shadow-lg); }
 
-        .card-number {
-            font-size: 2.5rem; font-weight: 800; color: var(--primary-light);
-            font-family: 'Outfit', sans-serif; margin-bottom: 12px; line-height: 1;
-        }
-        .mission-card h3 { font-size: 1.35rem; margin-bottom: 12px; color: var(--text-dark); }
-        .mission-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .card-icon-wrap { width: 60px; height: 60px; background: var(--bg-body); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: var(--primary); font-size: 1.5rem; font-weight: 800; font-family: 'Outfit'; }
+        
+        .mission-card h3 { font-size: 1.4rem; margin-bottom: 16px; color: var(--text-dark); }
+        .mission-card p { color: var(--text-muted); font-size: 1rem; }
 
-        /* --- Történet Rész --- */
+        /* --- Történet Rész (Meleg, sötétebb kártya) --- */
+        .section-padding { padding: 100px 0; }
         .story-section {
-            background: var(--primary); color: var(--bg-white); padding: 60px 0;
-            border-radius: var(--radius-xl); margin: 30px 0; position: relative; overflow: hidden;
+            background: var(--primary); color: var(--white); padding: 70px 60px;
+            border-radius: var(--radius-xl); position: relative; overflow: hidden;
+            box-shadow: 0 30px 60px rgba(212, 106, 76, 0.2);
         }
-        .story-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: center; }
-        .story-quote { font-size: 1.75rem; font-family: 'Outfit', sans-serif; line-height: 1.2; font-weight: 600; }
-        .story-text { color: rgba(255,255,255,0.85); font-size: 1rem; }
+        /* Finom minta a terrakotta kártyán */
+        .story-section::before {
+            content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            border-radius: 50%; transform: translate(30%, -30%);
+        }
 
-        /* --- Galéria Rész (Trendi rács) --- */
-        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 15px; }
-        .gallery-item { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 4px solid var(--bg-white); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .gallery-item:hover img { transform: scale(1.03); }
+        .story-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 50px; align-items: center; position: relative; z-index: 2; }
+        .story-quote { font-size: 2rem; font-family: 'Outfit', sans-serif; line-height: 1.3; font-weight: 600; }
+        .story-text { color: rgba(255,255,255,0.9); font-size: 1.05rem; }
+
+        /* --- Galéria --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 240px; gap: 20px; }
+        .gallery-item { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); position: relative; }
+        .gallery-item::after { content:''; position: absolute; inset:0; background: linear-gradient(to top, rgba(62,56,50,0.4), transparent 50%); opacity: 0; transition: opacity 0.3s; }
+        .gallery-item:hover::after { opacity: 1; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
 
         .img-large { grid-column: span 2; grid-row: span 2; }
         .img-wide { grid-column: span 2; }
 
-        /* --- Adományozás (CTA Blok) --- */
+        /* --- Adományozás (Barátságos, színes doboz) --- */
         .donation-block {
-            background: var(--bg-white); border-radius: var(--radius-xl); padding: 50px;
-            box-shadow: var(--shadow-lg); text-align: center; border: 2px solid var(--primary-light);
-            position: relative;
+            background: var(--white); border-radius: var(--radius-xl); padding: 60px;
+            box-shadow: var(--shadow-lg); text-align: center; border: 3px solid var(--primary-light);
+            position: relative; overflow: hidden;
         }
-        .donation-block h2 { font-size: clamp(2rem, 4vw, 2.8rem); color: var(--primary); }
+        .donation-block h2 { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--primary-dark); }
+        .donation-block p { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 16px auto 0; }
 
-        .donation-data { display: flex; justify-content: center; gap: 24px; margin: 35px 0; flex-wrap: wrap; }
+        .donation-data { display: flex; justify-content: center; gap: 24px; margin: 40px 0; flex-wrap: wrap; }
         .data-item {
-            background: var(--bg-body); padding: 18px 24px; border-radius: var(--radius-md);
-            text-align: left; flex: 1; min-width: 280px; border: 1px solid rgba(0,0,0,0.03);
+            background: var(--bg-section); padding: 24px 32px; border-radius: var(--radius-lg);
+            text-align: left; flex: 1; min-width: 280px; transition: transform 0.3s;
         }
-        .data-item span { display: block; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
-        .data-item strong { font-size: 1.25rem; color: var(--text-dark); font-family: 'Outfit', sans-serif; word-break: break-all; }
+        .data-item:hover { transform: translateY(-3px); }
+        .data-item span { display: block; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 8px; }
+        .data-item strong { font-size: 1.4rem; color: var(--primary-dark); font-family: 'Outfit', sans-serif; word-break: break-all; }
 
         /* --- Footer --- */
-        footer { background: var(--primary-dark); color: var(--bg-white); padding: 40px 0 20px; text-align: center; margin-top: 80px; }
+        footer { background: var(--text-dark); color: var(--bg-body); padding: 60px 0 30px; text-align: center; margin-top: 60px; }
 
-        /* --- RESPONSIVE / MOBIL OPTIMALIZÁLÁS (A lényeg) --- */
+        /* --- RESPONSZÍV BEÁLLÍTÁSOK --- */
         @media (max-width: 992px) {
-            .hero { padding-top: 120px; text-align: center; }
-            .hero-grid, .story-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero { padding-top: 130px; text-align: center; }
+            .hero-grid, .story-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 span::after { display: none; } /* Mobilon a kiemelés lehet zavaró */
             .hero p { margin: 0 auto 30px; }
             .hero-btns { justify-content: center; }
-            .hero-img-wrapper { transform: none; max-width: 400px; margin: 30px auto 0; }
-            .floating-stat { display: none; }
+            .hero-img-wrapper { max-width: 450px; margin: 20px auto 0; }
+            .floating-stat { left: 50%; transform: translateX(-50%); bottom: -20px; width: 90%; justify-content: center; }
             .nav-links { display: none; }
             .hamburger { display: block; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+            .story-section { padding: 50px 30px; }
         }
         
         @media (max-width: 600px) {
             html { font-size: 15px; }
             .container { width: 92%; }
-            .section-padding { padding: 60px 0; }
+            .section-padding, .section-mission { padding: 70px 0; }
             .hero-btns .btn { width: 100%; }
-            .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
+            .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; }
             .img-large, .img-wide { grid-column: span 1; grid-row: span 1; }
-            .story-section { padding: 40px 20px; border-radius: var(--radius-lg); }
-            .story-quote { font-size: 1.5rem; }
-            .donation-block { padding: 30px 20px; border-radius: var(--radius-lg); }
-            .data-item strong { font-size: 1.1rem; }
-            .logo { font-size: 1.1rem; }
+            .story-quote { font-size: 1.6rem; text-align: center; }
+            .donation-block { padding: 40px 20px; }
+            .data-item { padding: 20px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
 
     <header>
         <div class="container nav">
@@ -238,12 +253,12 @@
                 <span>Utolsó Padban Alapítvány</span>
             </a>
             <div class="nav-links">
-                <a href="#kik-vagyunk">Küldetés</a>
-                <a href="#tortenet">Történet</a>
+                <a href="#kik-vagyunk">Küldetésünk</a>
+                <a href="#tortenet">A Történetünk</a>
                 <a href="#galeria">Pillanatok</a>
-                <a href="#tamogatas" class="btn btn-accent" style="padding: 10px 20px; font-size: 0.9rem;">Támogatás</a>
+                <a href="#tamogatas" class="btn btn-accent" style="padding: 10px 24px; font-size: 0.95rem;">Támogatás</a>
             </div>
-            <button class="hamburger" aria-label="Menü megnyitása">
+            <button class="hamburger" aria-label="Menü">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
@@ -252,8 +267,8 @@
     </header>
 
     <div class="mobile-menu">
-        <a href="#kik-vagyunk">Küldetés</a>
-        <a href="#tortenet">Történet</a>
+        <a href="#kik-vagyunk">Küldetésünk</a>
+        <a href="#tortenet">A Történetünk</a>
         <a href="#galeria">Pillanatok</a>
         <a href="#tamogatas" class="btn btn-accent">Támogatás</a>
     </div>
@@ -262,63 +277,69 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div data-aos="fade-up">
-                    <span class="eyebrow">Esély. Figyelem. Jelenlét.</span>
-                    <h1>Hogy egyetlen gyerek se maradjon az <span>utolsó padban.</span></h1>
-                    <p>Az alapítvány célja, hogy minden gyermek esélyt kapjon a kiteljesedésre, származástól és helyzettől függetlenül. Valódi segítség, kézzelfogható jelenlét.</p>
+                    <span class="eyebrow">Remény. Esély. Jelenlét.</span>
+                    <h1>Hogy egyetlen gyerek se maradjon az <span>utolsó padban</span>.</h1>
+                    <p>Az alapítvány célja, hogy megadjuk a kezdőlökést, a figyelmet és az elfogadást azoknak a gyerekeknek, akiket a rendszer könnyen szem elől téveszt. Valódi emberi jelenléttel segítünk.</p>
                     <div class="hero-btns">
-                        <a href="#tamogatas" class="btn btn-accent">Segíteni szeretnék</a>
-                        <a href="#kik-vagyunk" class="btn btn-outline">Tudj meg többet</a>
+                        <a href="#tamogatas" class="btn btn-accent">Mellétek állok</a>
+                        <a href="#kik-vagyunk" class="btn btn-outline">Ismerj meg minket</a>
                     </div>
                 </div>
-                <div class="hero-img-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                <div class="hero-img-wrapper" data-aos="zoom-in" data-aos-delay="150">
                     <img src="images/hero.jpg" alt="Sztojka Edina gyerekekkel" />
                     <div class="floating-stat">
                         <div class="icon">♥</div>
                         <div>
-                            <strong style="display:block; font-family: 'Outfit'; font-size: 1.1rem;">Valódi figyelem</strong>
-                            <span style="font-size: 0.8rem; color: var(--text-muted)">Ott vagyunk velük.</span>
+                            <strong style="display:block; font-family: 'Outfit'; font-size: 1.15rem; color: var(--text-dark);">Valódi törődés</strong>
+                            <span style="font-size: 0.85rem; color: var(--text-muted)">Nem csak szavakban.</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="kik-vagyunk" class="section-padding">
+        <section id="kik-vagyunk" class="section-mission">
+            <div class="wave-top">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
-                    <h2>Küldetésünk a gyakorlatban</h2>
-                    <p style="color: var(--text-muted); font-size: 1.05rem;">Hiszünk abban, hogy a változás a figyelemmel kezdődik. Nem elégszünk meg a szavakkal, tettekre váltjuk a reményt.</p>
+                    <h2>Mit teszünk a gyakorlatban?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem;">Nem távolról osztunk tanácsokat. Ott vagyunk a közösségekben, figyelünk, mentorálunk és eszközöket adunk a kezükbe.</p>
                 </div>
                 
                 <div class="grid-3">
                     <div class="mission-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-number">01</div>
-                        <h3>Észrevenni</h3>
-                        <p>Felkutatjuk és támogatjuk azokat a gyerekeket, akik felett a rendszer sokszor csendben átsiklik, és láthatóvá tesszük a tehetségüket.</p>
+                        <div class="card-icon-wrap">01</div>
+                        <h3>Észrevesszük őket</h3>
+                        <p>Kereszttüzébe kerülnek azok a fiatalok, akik tehetségesek, vagy egyszerűen csak szeretetre vágynak, de a háttérben maradtak.</p>
                     </div>
                     <div class="mission-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-number">02</div>
-                        <h3>Eszközöket adni</h3>
-                        <p>Kézzelfogható lehetőségeket, mentorálást és egy támogató közösséget biztosítunk, hogy ne csak álmodjanak, hanem célokat érjenek el.</p>
+                        <div class="card-icon-wrap">02</div>
+                        <h3>Kapaszkodót adunk</h3>
+                        <p>Fizikai és érzelmi támogatást, mentorálást biztosítunk. Közösséget építünk, ahová bátran fordulhatnak segítségért.</p>
                     </div>
                     <div class="mission-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-number">03</div>
-                        <h3>Jövőt építeni</h3>
-                        <p>Hisszük, hogy a hátrányos helyzet nem determinálja a jövőt. Együtt lebontjuk az akadályokat egy teljesebb élet felé.</p>
+                        <div class="card-icon-wrap">03</div>
+                        <h3>Jövőképet építünk</h3>
+                        <p>A hátrányos helyzet nem szabad, hogy ítélet legyen. Megmutatjuk a kiutat, és végigkísérjük őket az odavezető úton.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="tortenet" class="container">
+        <section id="tortenet" class="section-padding container">
             <div class="story-section" data-aos="fade-up">
-                <div class="container story-grid">
+                <div class="story-grid">
                     <div class="story-quote">
-                        "A jövő ott kezdődik, ahol végre észrevesszük egymást."
+                        "A legnagyobb ajándék, amit egy gyereknek adhatunk, az a figyelem és a hit, hogy ő is számít."
                     </div>
                     <div class="story-text">
-                        <p style="margin-bottom: 15px;">Sztojka Edina életútja a kitartás és az emberség példája. Az alapítvány azért jött létre, hogy ez a tenni akarás még több gyermekhez eljusson.</p>
-                        <p>Nem a háttérből beszélünk, hanem ott vagyunk a terepen, a családok és gyerekek mellett. Mentorálunk, segítünk, és hitet adunk, hogy van kiút az utolsó padból.</p>
+                        <p style="margin-bottom: 20px;">Sztojka Edina saját útján tapasztalta meg, mit jelent az akarat és a külső támogatás ereje. Az Utolsó Padban Alapítvány nem egy steril szervezet, hanem szívből jövő misszió.</p>
+                        <p>Célunk, hogy a reménytelenséget felváltsa a tenni akarás, és azok a gyerekek, akik ma még az "utolsó padban" húzzák meg magukat, holnap bátran álljanak a saját életük színpadára.</p>
                     </div>
                 </div>
             </div>
@@ -326,28 +347,28 @@
 
         <section id="galeria" class="section-padding">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <h2>Pillanatok a munkánkból</h2>
-                    <p style="color: var(--text-muted)">Nem csak képek, hanem valódi sorsok és mosolyok, amiket közösen értünk el.</p>
+                <div class="section-header" data-aos="fade-up" style="margin-bottom: 50px;">
+                    <h2>Sorsok és mosolyok</h2>
+                    <p style="color: var(--text-muted)">Ezek a képek a mindennapi munkánk lenyomatai. Őszinte pillanatok a közös építkezésből.</p>
                 </div>
                 
                 <div class="gallery-grid">
-                    <div class="gallery-item img-large" data-aos="zoom-in"><img src="images/edina8.jpg" alt="Esemény" /></div>
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="images/edina2.jpg" alt="Edina" /></div>
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="images/edina3.jpg" alt="Közösség" /></div>
-                    <div class="gallery-item img-wide" data-aos="zoom-in"><img src="images/edina4.jpg" alt="Rendezvény" /></div>
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="images/edina5.jpg" alt="Gyerekek" /></div>
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="images/edina6.jpg" alt="Portré" /></div>
+                    <div class="gallery-item img-large" data-aos="zoom-in"><img src="images/edina8.jpg" alt="Gyerekekkel közös pillanat" /></div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="images/edina2.jpg" alt="Edina portré" /></div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="images/edina3.jpg" alt="Közösségi esemény" /></div>
+                    <div class="gallery-item img-wide" data-aos="zoom-in"><img src="images/edina4.jpg" alt="Rendezvény pillanatai" /></div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="images/edina5.jpg" alt="Támogatás" /></div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="images/edina6.jpg" alt="Figyelem" /></div>
                 </div>
             </div>
         </section>
 
-        <section id="tamogatas" class="section-padding">
+        <section id="tamogatas" class="section-padding" style="padding-bottom: 120px;">
             <div class="container">
                 <div class="donation-block" data-aos="fade-up">
-                    <h2>Légy részese te is a változásnak!</h2>
-                    <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 15px auto 0;">
-                        Minden felajánlás közelebb visz minket ahhoz, hogy kevesebb tehetség vesszen el. Támogasd munkánkat adód 1%-ával vagy közvetlen adománnyal.
+                    <h2>Közösen tehetünk a legtöbbet!</h2>
+                    <p>
+                        Minden apró segítség hatalmas lépés egy gyerek életében. Állj mellénk, ajánld fel adód 1%-át, vagy támogass minket közvetlenül, hogy ne maradjanak egyedül!
                     </p>
                     
                     <div class="donation-data">
@@ -361,8 +382,8 @@
                         </div>
                     </div>
 
-                    <p style="font-weight: 600; color: var(--primary); margin-bottom: 25px;">Hálásan köszönjük az összefogást!</p>
-                    <a href="mailto:info@utolsopadban.hu" class="btn btn-accent">Kapcsolatfelvétel</a>
+                    <p style="font-weight: 700; color: var(--primary); margin-bottom: 25px; font-size: 1.1rem;">Hálásan köszönjük, hogy hiszel bennünk!</p>
+                    <a href="mailto:info@utolsopadban.hu" class="btn btn-accent">Lépj velünk kapcsolatba</a>
                 </div>
             </div>
         </section>
@@ -370,32 +391,29 @@
 
     <footer>
         <div class="container">
-            <h3 style="font-family: 'Outfit'; font-size: 1.4rem; margin-bottom: 12px;">Utolsó Padban Alapítvány</h3>
-            <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">&copy; 2026 Sztojka Edina. Minden jog fenntartva.</p>
+            <h3 style="font-family: 'Outfit'; font-size: 1.6rem; margin-bottom: 15px; color: var(--bg-body);">Utolsó Padban Alapítvány</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Sztojka Edina. Minden jog fenntartva.</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 80
-        });
+        // Animációk inicializálása
+        AOS.init({ duration: 800, once: true, offset: 80 });
 
-        // Header shadow and padding update on scroll
+        // Navigáció árnyékolása görgetéskor
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 20) {
-                header.style.boxShadow = '0 4px 15px rgba(0,0,0,0.03)';
-                header.style.padding = '5px 0';
+                header.style.boxShadow = '0 4px 20px rgba(212, 106, 76, 0.08)';
+                header.style.background = 'rgba(250, 244, 237, 0.95)';
             } else {
                 header.style.boxShadow = 'none';
-                header.style.padding = '0';
+                header.style.background = 'rgba(250, 244, 237, 0.85)';
             }
         });
 
-        // Mobilbarát Menü Kezelése
+        // Mobil menü kezelése
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-menu a');
@@ -403,24 +421,13 @@
         function toggleMenu() {
             hamburger.classList.toggle('toggle');
             mobileMenu.classList.toggle('active');
-            // Menü megnyitásakor letiltjuk a görgetést a háttérben
-            if (mobileMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         }
 
         hamburger.addEventListener('click', toggleMenu);
-
-        // Menüpontra kattintva bezárjuk a menüt
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
-        });
+        mobileLinks.forEach(link => link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) toggleMenu();
+        }));
     </script>
 </body>
 </html>
