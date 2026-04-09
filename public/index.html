@@ -1,995 +1,254 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sztojka Edina – Utolsó Padban Alapítvány</title>
-  <meta name="description" content="Sztojka Edina – Utolsó Padban Alapítvány hivatalos weboldala." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    :root{
-      --bg:#f6f3ea;
-      --white:#ffffff;
-      --black:#0f0f10;
-      --black-soft:#171719;
-      --text:#141414;
-      --muted:#66615a;
-      --yellow:#ffd84d;
-      --yellow-2:#ffe680;
-      --line:rgba(20,20,20,0.08);
-      --shadow:0 18px 50px rgba(0,0,0,0.10);
-      --shadow-dark:0 18px 50px rgba(0,0,0,0.22);
-      --radius-xl:34px;
-      --radius-lg:24px;
-      --radius-md:18px;
-      --max:1280px;
-    }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:"Manrope",sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,216,77,0.18), transparent 20%),
-        linear-gradient(180deg,#faf8f1 0%, var(--bg) 100%);
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    img{
-      display:block;
-      max-width:100%;
-    }
-
-    .container{
-      width:min(calc(100% - 28px), var(--max));
-      margin:0 auto;
-    }
-
-    .serif{
-      font-family:"Playfair Display",serif;
-    }
-
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(250,248,241,0.84);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(0,0,0,0.05);
-    }
-
-    .nav{
-      min-height:84px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-    }
-
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      flex-shrink:0;
-    }
-
-    .brand strong{
-      font-size:1.02rem;
-      font-weight:800;
-      letter-spacing:0.01em;
-    }
-
-    .brand span{
-      font-size:0.78rem;
-      font-weight:700;
-      color:var(--muted);
-      letter-spacing:0.10em;
-      text-transform:uppercase;
-    }
-
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:24px;
-      flex-wrap:wrap;
-      justify-content:center;
-    }
-
-    .menu a{
-      font-size:0.94rem;
-      font-weight:800;
-      position:relative;
-    }
-
-    .menu a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-7px;
-      width:0;
-      height:3px;
-      border-radius:999px;
-      background:var(--yellow);
-      transition:width .25s ease;
-    }
-
-    .menu a:hover::after{
-      width:100%;
-    }
-
-    .menu-cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:46px;
-      padding:0 18px;
-      border-radius:999px;
-      background:var(--black);
-      color:var(--white);
-      font-weight:800;
-      box-shadow:var(--shadow-dark);
-    }
-
-    section{
-      padding:28px 0;
-    }
-
-    .hero{
-      padding-top:24px;
-    }
-
-    .hero-wrap{
-      display:grid;
-      grid-template-columns:1.05fr 0.95fr;
-      gap:22px;
-      align-items:stretch;
-    }
-
-    .hero-left{
-      background:var(--black);
-      color:var(--white);
-      border-radius:var(--radius-xl);
-      padding:48px;
-      min-height:720px;
-      position:relative;
-      overflow:hidden;
-      box-shadow:var(--shadow-dark);
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .hero-left::before{
-      content:"";
-      position:absolute;
-      width:240px;
-      height:240px;
-      right:-70px;
-      top:-70px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(255,216,77,0.30), rgba(255,216,77,0));
-      pointer-events:none;
-    }
-
-    .hero-left::after{
-      content:"";
-      position:absolute;
-      width:320px;
-      height:320px;
-      left:-120px;
-      bottom:-140px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(255,255,255,0.08), rgba(255,255,255,0));
-      pointer-events:none;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      width:fit-content;
-      align-items:center;
-      gap:10px;
-      padding:10px 16px;
-      border-radius:999px;
-      background:rgba(255,216,77,0.12);
-      color:var(--yellow);
-      font-size:0.8rem;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:0.10em;
-      margin-bottom:20px;
-      border:1px solid rgba(255,216,77,0.18);
-    }
-
-    h1{
-      font-family:"Playfair Display",serif;
-      font-size:clamp(3.3rem,8vw,6.6rem);
-      line-height:0.92;
-      letter-spacing:-0.05em;
-      margin-bottom:20px;
-      max-width:10ch;
-      font-weight:800;
-    }
-
-    .lead{
-      font-size:1.08rem;
-      color:rgba(255,255,255,0.78);
-      max-width:60ch;
-      margin-bottom:30px;
-      font-weight:500;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-bottom:32px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:0 24px;
-      border-radius:999px;
-      border:none;
-      cursor:pointer;
-      font-weight:800;
-      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-    }
-
-    .btn:hover{
-      transform:translateY(-2px);
-    }
-
-    .btn-yellow{
-      background:var(--yellow);
-      color:#111;
-      box-shadow:0 14px 34px rgba(255,216,77,0.28);
-    }
-
-    .btn-outline{
-      background:transparent;
-      color:var(--white);
-      border:1px solid rgba(255,255,255,0.16);
-    }
-
-    .hero-points{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-
-    .hero-point{
-      padding:18px;
-      border-radius:22px;
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .hero-point strong{
-      display:block;
-      margin-bottom:4px;
-      font-size:0.98rem;
-      color:var(--yellow);
-    }
-
-    .hero-point span{
-      color:rgba(255,255,255,0.72);
-      font-size:0.9rem;
-      font-weight:600;
-    }
-
-    .hero-right{
-      position:relative;
-      min-height:720px;
-      border-radius:var(--radius-xl);
-      overflow:hidden;
-      box-shadow:var(--shadow-dark);
-      background:#ddd;
-    }
-
-    .hero-right img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .hero-overlay{
-      position:absolute;
-      left:20px;
-      right:20px;
-      bottom:20px;
-      padding:20px 22px;
-      border-radius:24px;
-      background:rgba(15,15,16,0.56);
-      color:var(--white);
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .hero-overlay strong{
-      display:block;
-      margin-bottom:5px;
-      color:var(--yellow);
-      font-size:1rem;
-    }
-
-    .split-intro{
-      display:grid;
-      grid-template-columns:0.85fr 1.15fr;
-      gap:22px;
-      align-items:stretch;
-    }
-
-    .quote-card{
-      background:var(--yellow);
-      color:#111;
-      border-radius:var(--radius-xl);
-      padding:34px;
-      box-shadow:var(--shadow);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height:320px;
-    }
-
-    .quote-card .mini{
-      font-size:0.82rem;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:0.10em;
-      opacity:0.75;
-    }
-
-    .quote-card h2{
-      font-family:"Playfair Display",serif;
-      font-size:clamp(2.2rem,5vw,4rem);
-      line-height:0.96;
-      letter-spacing:-0.04em;
-      margin:14px 0;
-    }
-
-    .quote-card p{
-      font-weight:700;
-      color:#2d2a21;
-    }
-
-    .story-panel{
-      background:var(--white);
-      border-radius:var(--radius-xl);
-      padding:34px;
-      box-shadow:var(--shadow);
-      border:1px solid var(--line);
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .story-panel h3{
-      font-family:"Playfair Display",serif;
-      font-size:clamp(2rem,4vw,3.4rem);
-      line-height:0.98;
-      letter-spacing:-0.04em;
-      margin-bottom:14px;
-    }
-
-    .story-panel p{
-      color:var(--muted);
-      font-weight:600;
-      margin-bottom:14px;
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:18px;
-      margin-bottom:24px;
-    }
-
-    .section-head h2{
-      font-family:"Playfair Display",serif;
-      font-size:clamp(2.2rem,5vw,3.8rem);
-      line-height:0.95;
-      letter-spacing:-0.04em;
-      max-width:12ch;
-    }
-
-    .section-head p{
-      max-width:58ch;
-      color:var(--muted);
-      font-weight:600;
-    }
-
-    .mission-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .mission-card{
-      border-radius:var(--radius-lg);
-      padding:28px;
-      box-shadow:var(--shadow);
-      min-height:240px;
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-
-    .mission-card:hover{
-      transform:translateY(-4px);
-    }
-
-    .mission-card.dark{
-      background:var(--black);
-      color:var(--white);
-      box-shadow:var(--shadow-dark);
-    }
-
-    .mission-card.light{
-      background:var(--white);
-      color:var(--text);
-      border:1px solid var(--line);
-    }
-
-    .mission-card.yellow{
-      background:var(--yellow);
-      color:#111;
-    }
-
-    .mission-card .nr{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:52px;
-      height:52px;
-      border-radius:16px;
-      margin-bottom:16px;
-      font-weight:800;
-      font-size:1rem;
-    }
-
-    .mission-card.dark .nr{
-      background:rgba(255,216,77,0.12);
-      color:var(--yellow);
-      border:1px solid rgba(255,216,77,0.14);
-    }
-
-    .mission-card.light .nr{
-      background:#111;
-      color:#fff;
-    }
-
-    .mission-card.yellow .nr{
-      background:#111;
-      color:var(--yellow);
-    }
-
-    .mission-card h3{
-      margin-bottom:10px;
-      font-size:1.18rem;
-    }
-
-    .mission-card p{
-      font-weight:600;
-      color:inherit;
-      opacity:0.9;
-    }
-
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      grid-auto-rows:110px;
-      gap:18px;
-    }
-
-    .gallery-item{
-      position:relative;
-      overflow:hidden;
-      border-radius:28px;
-      box-shadow:var(--shadow);
-      background:#e7e1d5;
-    }
-
-    .gallery-item img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .45s ease, filter .45s ease;
-    }
-
-    .gallery-item:hover img{
-      transform:scale(1.05);
-      filter:contrast(1.04);
-    }
-
-    .gallery-item:nth-child(1){grid-column:span 5;grid-row:span 4;}
-    .gallery-item:nth-child(2){grid-column:span 3;grid-row:span 2;}
-    .gallery-item:nth-child(3){grid-column:span 4;grid-row:span 2;}
-    .gallery-item:nth-child(4){grid-column:span 3;grid-row:span 2;}
-    .gallery-item:nth-child(5){grid-column:span 4;grid-row:span 2;}
-    .gallery-item:nth-child(6){grid-column:span 5;grid-row:span 2;}
-    .gallery-item:nth-child(7){grid-column:span 4;grid-row:span 2;}
-    .gallery-item:nth-child(8){grid-column:span 4;grid-row:span 2;}
-
-    .gallery-caption{
-      position:absolute;
-      left:14px;
-      right:14px;
-      bottom:14px;
-      padding:14px 16px;
-      border-radius:18px;
-      background:rgba(15,15,16,0.58);
-      color:#fff;
-      backdrop-filter:blur(8px);
-      font-size:0.92rem;
-      font-weight:700;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .donation-wrap{
-      display:grid;
-      grid-template-columns:1.05fr 0.95fr;
-      gap:20px;
-    }
-
-    .donation-main{
-      background:var(--black);
-      color:var(--white);
-      border-radius:var(--radius-xl);
-      padding:38px;
-      box-shadow:var(--shadow-dark);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .donation-main::before{
-      content:"";
-      position:absolute;
-      width:260px;
-      height:260px;
-      top:-90px;
-      right:-90px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(255,216,77,0.24), rgba(255,216,77,0));
-    }
-
-    .donation-main h3{
-      font-family:"Playfair Display",serif;
-      font-size:clamp(2.3rem,5vw,4.2rem);
-      line-height:0.95;
-      letter-spacing:-0.04em;
-      margin-bottom:14px;
-      max-width:12ch;
-    }
-
-    .donation-main p{
-      color:rgba(255,255,255,0.82);
-      font-weight:500;
-      margin-bottom:14px;
-      max-width:60ch;
-    }
-
-    .tax-box{
-      margin-top:24px;
-      background:var(--yellow);
-      color:#111;
-      padding:22px;
-      border-radius:24px;
-      box-shadow:0 16px 30px rgba(255,216,77,0.18);
-    }
-
-    .tax-box strong{
-      display:block;
-      font-size:1.08rem;
-      margin-bottom:8px;
-    }
-
-    .donation-side{
-      background:var(--white);
-      border-radius:var(--radius-xl);
-      padding:30px;
-      box-shadow:var(--shadow);
-      border:1px solid var(--line);
-    }
-
-    .donation-side h4{
-      font-size:1.18rem;
-      margin-bottom:14px;
-    }
-
-    .data-list{
-      display:grid;
-      gap:12px;
-    }
-
-    .data-item{
-      padding:16px 18px;
-      border-radius:18px;
-      background:#faf8f1;
-      border:1px solid var(--line);
-      word-break:break-word;
-    }
-
-    .data-item span{
-      display:block;
-      margin-bottom:4px;
-      font-size:0.78rem;
-      font-weight:800;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:0.08em;
-    }
-
-    .side-cta{
-      margin-top:18px;
-    }
-
-    .footer{
-      padding:24px 0 46px;
-    }
-
-    .footer-box{
-      background:var(--black);
-      color:var(--white);
-      border-radius:28px;
-      padding:24px 26px;
-      box-shadow:var(--shadow-dark);
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .footer-box p{
-      color:rgba(255,255,255,0.72);
-      font-weight:600;
-    }
-
-    @media (max-width:1100px){
-      .hero-wrap,
-      .split-intro,
-      .mission-grid,
-      .donation-wrap{
-        grid-template-columns:1fr;
-      }
-
-      .hero-left,
-      .hero-right{
-        min-height:auto;
-      }
-
-      .gallery-grid{
-        grid-template-columns:repeat(2,1fr);
-        grid-auto-rows:230px;
-      }
-
-      .gallery-item,
-      .gallery-item:nth-child(1),
-      .gallery-item:nth-child(2),
-      .gallery-item:nth-child(3),
-      .gallery-item:nth-child(4),
-      .gallery-item:nth-child(5),
-      .gallery-item:nth-child(6),
-      .gallery-item:nth-child(7),
-      .gallery-item:nth-child(8){
-        grid-column:auto;
-        grid-row:auto;
-      }
-    }
-
-    @media (max-width:760px){
-      .nav{
-        padding:14px 0;
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .menu{
-        gap:12px;
-      }
-
-      .hero-left,
-      .quote-card,
-      .story-panel,
-      .mission-card,
-      .donation-main,
-      .donation-side{
-        padding:22px;
-      }
-
-      .hero-points{
-        grid-template-columns:1fr;
-      }
-
-      .gallery-grid{
-        grid-template-columns:1fr;
-        grid-auto-rows:260px;
-      }
-
-      .section-head{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      h1{
-        max-width:100%;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sztojka Edina – Utolsó Padban Alapítvány</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#f6f3ea;
+--cream:#f4efe6;
+--white:#ffffff;
+--text:#111;
+--muted:#666;
+--yellow:#ffd84d;
+--shadow:0 15px 40px rgba(0,0,0,0.08);
+--radius:25px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Manrope',sans-serif;}
+
+body{
+background:linear-gradient(180deg,#faf8f1,var(--bg));
+color:var(--text);
+}
+
+/* NAV */
+header{
+position:sticky;top:0;
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(10px);
+padding:15px 5%;
+display:flex;justify-content:space-between;align-items:center;
+}
+
+nav a{
+margin-left:20px;
+font-weight:700;
+position:relative;
+}
+
+nav a:after{
+content:"";
+position:absolute;
+bottom:-5px;left:0;
+width:0;height:2px;
+background:var(--yellow);
+transition:0.3s;
+}
+
+nav a:hover:after{width:100%}
+
+.cta{
+background:var(--yellow);
+padding:8px 15px;
+border-radius:20px;
+font-weight:800;
+}
+
+/* HERO */
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+padding:50px 5%;
+gap:25px;
+}
+
+.hero-left{
+background:var(--cream);
+padding:40px;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:42px;
+margin-bottom:15px;
+}
+
+.hero p{margin-bottom:20px;color:var(--muted)}
+
+.btn{
+padding:12px 25px;
+border-radius:25px;
+border:none;
+cursor:pointer;
+font-weight:800;
+margin-right:10px;
+}
+
+.btn-yellow{background:var(--yellow)}
+.btn-outline{border:1px solid #ccc;background:white}
+
+.hero img{
+width:100%;
+border-radius:var(--radius);
+}
+
+/* STORY */
+.story{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+padding:50px 5%;
+}
+
+.story img{border-radius:var(--radius)}
+
+.story-text{
+background:white;
+padding:30px;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+}
+
+/* CARDS */
+.cards{
+display:flex;
+gap:20px;
+padding:50px 5%;
+flex-wrap:wrap;
+}
+
+.card{
+flex:1;
+background:var(--cream);
+padding:25px;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+}
+
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+padding:50px 5%;
+}
+
+.gallery img{
+border-radius:var(--radius);
+width:100%;
+}
+
+/* DONATE */
+.donate{
+background:var(--yellow);
+margin:50px 5%;
+padding:40px;
+border-radius:var(--radius);
+}
+
+footer{
+text-align:center;
+padding:30px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero,.story{grid-template-columns:1fr}
+h1{font-size:28px}
+}
+</style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="container nav">
-      <a href="#fooldal" class="brand">
-        <strong>Sztojka Edina</strong>
-        <span>Utolsó Padban Alapítvány</span>
-      </a>
 
-      <nav class="menu">
-        <a href="#fooldal">Főoldal</a>
-        <a href="#tortenet">Történet</a>
-        <a href="#galeria">Galéria</a>
-        <a href="#tamogatas">Támogatás</a>
-        <a href="#kapcsolat">Kapcsolat</a>
-      </nav>
+<header>
+<div><strong>Sztojka Edina</strong></div>
 
-      <a class="menu-cta" href="#tamogatas">Segítek</a>
-    </div>
-  </header>
+<nav>
+<a href="#">Főoldal</a>
+<a href="#">Történet</a>
+<a href="#">Galéria</a>
+<a href="#">Támogatás</a>
+<a class="cta" href="#">Segítek</a>
+</nav>
+</header>
 
-  <main id="fooldal">
-    <section class="hero">
-      <div class="container hero-wrap">
-        <div class="hero-left">
-          <div class="eyebrow">Figyelem • Esély • Jelenlét</div>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-left">
+<h1>Ne maradjon senki az utolsó padban</h1>
+<p>Valódi esélyt adunk a gyermekeknek.</p>
 
-          <h1>Ne maradjon senki az utolsó padban.</h1>
+<button class="btn btn-yellow">Támogatom</button>
+<button class="btn btn-outline">Történet</button>
+</div>
 
-          <p class="lead">
-            A Sztojka Edina – Utolsó Padban Alapítvány azért dolgozik, hogy a
-            gyermekek több figyelmet, több lehetőséget és több reményt kapjanak.
-            Egy ügy, amely nem a háttérben marad, hanem valódi sorsok mellé áll.
-          </p>
+<img src="images/hero.jpg">
+</section>
 
-          <div class="hero-actions">
-            <a class="btn btn-yellow" href="#tamogatas">Támogatom az alapítványt</a>
-            <a class="btn btn-outline" href="#tortenet">Megismerem a történetet</a>
-          </div>
+<!-- STORY -->
+<section class="story">
+<img src="images/edina1.jpg">
 
-          <div class="hero-points">
-            <div class="hero-point">
-              <strong>Valódi ügy</strong>
-              <span>Gyermekekről, figyelemről és jövőkről szól.</span>
-            </div>
-            <div class="hero-point">
-              <strong>Hiteles jelenlét</strong>
-              <span>A segítség itt nem dísz, hanem kézzelfogható közelség.</span>
-            </div>
-            <div class="hero-point">
-              <strong>Erős üzenet</strong>
-              <span>Senki ne maradjon észrevétlen vagy egyedül.</span>
-            </div>
-          </div>
-        </div>
+<div class="story-text">
+<h2>Sztojka Edina története</h2>
+<p>Sztojka Edina egy olyan életutat képvisel, amely a kitartásról, erőről és mások segítéséről szól.</p>
 
-        <div class="hero-right">
-          <img src="images/hero.jpg" alt="Sztojka Edina" />
-          <div class="hero-overlay">
-            <strong>A jövő ott kezdődik, ahol valaki végre észreveszi a másikat.</strong>
-            Egyetlen figyelmes jelenlét is képes irányt változtatni.
-          </div>
-        </div>
-      </div>
-    </section>
+<p>Az alapítványt azért hozta létre, hogy a gyermekek esélyt kapjanak egy jobb jövőre.</p>
+</div>
+</section>
 
-    <section id="tortenet">
-      <div class="container split-intro">
-        <div class="quote-card">
-          <div class="mini">Utolsó Padban Alapítvány</div>
-          <h2>Nem elég látni a problémát. Oda is kell állni mellé.</h2>
-          <p>
-            Ez az alapítvány azért született, hogy azok a gyermekek is valódi
-            figyelmet és esélyt kapjanak, akik túl gyakran maradnak a háttérben.
-          </p>
-        </div>
+<!-- CARDS -->
+<section class="cards">
+<div class="card">
+<h3>Esélyteremtés</h3>
+<p>Minden gyermeknek jár a lehetőség.</p>
+</div>
 
-        <div class="story-panel">
-          <h3>Amikor valaki felemel másokat, a történet többé nem csak róla szól.</h3>
-          <p>
-            Sztojka Edina neve egy olyan életutat idéz, amelyben a kitartás,
-            az emberség és a tenni akarás egyszerre van jelen. Az Utolsó Padban
-            Alapítvány ennek a szemléletnek a folytatása.
-          </p>
-          <p>
-            Az alapítvány azért jött létre, hogy azok a gyermekek is figyelmet,
-            támogatást és lehetőséget kapjanak, akik sokszor a háttérben maradnak.
-            Akiknek ugyanúgy járna az esély, mégis kevesebb jut belőle.
-          </p>
-          <p>
-            Ez a weboldal is ezt a világot szeretné megmutatni: méltóságot,
-            reményt, emberközelséget és azt a csendes, mégis erős jelenlétet,
-            amely képes ajtókat nyitni a jövő felé.
-          </p>
-        </div>
-      </div>
-    </section>
+<div class="card">
+<h3>Közösség</h3>
+<p>Együtt erősebbek vagyunk.</p>
+</div>
 
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <h2>Küldetés, ami nem díszszöveg.</h2>
-          <p>
-            Az alapítvány munkája arról szól, hogy a gyermekek ne hátrányból,
-            hanem figyelemből, bizalomból és lehetőségből építhessék a jövőjüket.
-          </p>
-        </div>
+<div class="card">
+<h3>Valódi segítség</h3>
+<p>Nem csak szavak, hanem tettek.</p>
+</div>
+</section>
 
-        <div class="mission-grid">
-          <article class="mission-card dark">
-            <div class="nr">01</div>
-            <h3>Esélyteremtés</h3>
-            <p>
-              Minden gyermek megérdemli, hogy lássák benne a lehetőséget, ne csak a hiányt.
-            </p>
-          </article>
+<!-- GALLERY -->
+<section class="gallery">
+<img src="images/edina8.jpg">
+<img src="images/edina1.jpg">
+<img src="images/edina2.jpg">
+<img src="images/edina3.jpg">
+<img src="images/edina4.jpg">
+<img src="images/edina5.jpg">
+<img src="images/edina6.jpg">
+<img src="images/edina7.jpg">
+</section>
 
-          <article class="mission-card yellow">
-            <div class="nr">02</div>
-            <h3>Közösség</h3>
-            <p>
-              Egy megtartó közeg nemcsak segít, hanem új irányt is adhat egy életnek.
-            </p>
-          </article>
+<!-- DONATE -->
+<section class="donate">
+<h2>Ajánld fel adód 1%-át!</h2>
+<p>Segíts, hogy több gyermek kapjon esélyt.</p>
 
-          <article class="mission-card light">
-            <div class="nr">03</div>
-            <h3>Valódi segítség</h3>
-            <p>
-              Nem puszta mondatokban, hanem jelenlétben, figyelemben és tettekben mérhető.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+<br>
 
-    <section id="galeria">
-      <div class="container">
-        <div class="section-head">
-          <h2>Képek, amelyek mögött valódi történetek vannak.</h2>
-          <p>
-            Sztojka Edina és az alapítvány munkájának pillanatai. Nem csak képek,
-            hanem emberi közelség, figyelem és jelenlét lenyomatai.
-          </p>
-        </div>
+<p><strong>Adószám:</strong> 19313018-1-04</p>
+<p><strong>Számlaszám:</strong> 50432466-10006368</p>
+</section>
 
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="images/edina8.jpg" alt="Sztojka Edina gyermekkel" />
-            <div class="gallery-caption">Szeretet, figyelem és valódi közelség</div>
-          </div>
+<footer>
+© 2026 Sztojka Edina – Utolsó Padban Alapítvány
+</footer>
 
-          <div class="gallery-item">
-            <img src="images/edina2.jpg" alt="Sztojka Edina" />
-            <div class="gallery-caption">Hiteles jelenlét</div>
-          </div>
-
-          <div class="gallery-item">
-            <img src="images/edina3.jpg" alt="Sztojka Edina eseményen" />
-            <div class="gallery-caption">Közösség és támogatás</div>
-          </div>
-
-          <div class="gallery-item">
-            <img src="images/edina4.jpg" alt="Sztojka Edina rendezvényen" />
-            <div class="gallery-caption">Remény képekben</div>
-          </div>
-
-          <div class="gallery-item">
-            <img src="images/edina5.jpg" alt="Sztojka Edina programon" />
-            <div class="gallery-caption">Valódi történetek</div>
-          </div>
-
-          <div class="gallery-item">
-            <img src="images/edina6.jpg" alt="Sztojka Edina portré" />
-            <div class="gallery-caption">Elköteleződés</div>
-          </div>
-
-          <div class="gallery-item">
-            <img src="images/edina7.jpg" alt="Sztojka Edina eseményen" />
-            <div class="gallery-caption">Jelenlét, ami számít</div>
-          </div>
-
-          <div class="gallery-item">
-            <img src="images/edina1.jpg" alt="Sztojka Edina portré" />
-            <div class="gallery-caption">Egy ügy arca és ereje</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tamogatas">
-      <div class="container donation-wrap">
-        <div class="donation-main">
-          <h3>Segíts, hogy az esély ne kiváltság legyen.</h3>
-
-          <p>
-            Minden támogatás közelebb visz ahhoz, hogy több gyermek kapjon
-            figyelmet, bizalmat, lehetőséget és valódi kapaszkodót a mindennapokban.
-          </p>
-
-          <p>
-            A támogatás nemcsak anyagi segítség. Egy jelzés is, hogy vannak,
-            akik hisznek bennük, és nem hagyják őket az utolsó padban.
-          </p>
-
-          <div class="tax-box">
-            <strong>Ajánld fel adód 1%-át!</strong>
-            Egyetlen döntés is sokat jelenthet. Az adód 1%-ának felajánlásával
-            hozzájárulhatsz ahhoz, hogy az alapítvány még több gyermekhez jusson el
-            figyelemmel, támogatással és reménnyel.
-          </div>
-        </div>
-
-        <div class="donation-side">
-          <h4>Támogatási adatok</h4>
-
-          <div class="data-list">
-            <div class="data-item">
-              <span>Adószám</span>
-              19313018-1-04
-            </div>
-
-            <div class="data-item">
-              <span>Számlaszám</span>
-              50432466-10006368
-            </div>
-
-            <div class="data-item">
-              <span>Bank</span>
-              Takarék Bank
-            </div>
-          </div>
-
-          <div class="side-cta">
-            <a class="btn btn-yellow" href="#kapcsolat">Kapcsolatfelvétel</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer id="kapcsolat" class="footer">
-    <div class="container">
-      <div class="footer-box">
-        <div>
-          <strong>Sztojka Edina – Utolsó Padban Alapítvány</strong>
-          <p>Karakteres, modern, mobilbarát jelenlét egy fontos ügy mögött.</p>
-        </div>
-
-        <div>
-          <p>© 2026 Minden jog fenntartva.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>
