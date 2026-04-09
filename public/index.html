@@ -1,166 +1,620 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sztojka Edina - Utolsó Padban Alapítvány</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sztojka Edina - Utolsó Padban Alapítvány</title>
+  <meta
+    name="description"
+    content="Sztojka Edina - Utolsó Padban Alapítvány hivatalos weboldala. Támogatás, küldetés, galéria és kapcsolat."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --surface: rgba(255, 255, 255, 0.7);
+      --text: #161616;
+      --muted: #5f5a52;
+      --gold: #c9a86a;
+      --gold-dark: #a88443;
+      --border: rgba(22, 22, 22, 0.08);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+      --radius: 24px;
+      --max: 1200px;
+    }
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        body {
-            background: #f8f8f8;
-            color: #111;
-        }
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(201, 168, 106, 0.16), transparent 28%),
+        linear-gradient(180deg, #fbf8f2 0%, #f4efe6 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            background: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 10%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            z-index: 1000;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .logo {
-            font-weight: 700;
-            font-size: 18px;
-        }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #111;
-            font-weight: 500;
-        }
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
 
-        nav a:hover {
-            color: #c9a86a;
-        }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 244, 238, 0.82);
+      border-bottom: 1px solid rgba(22, 22, 22, 0.06);
+    }
 
-        .hero {
-            height: 100vh;
-            background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
 
-        .hero p {
-            font-size: 18px;
-            max-width: 600px;
-            margin: auto;
-        }
+    .brand strong {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
 
-        .hero button {
-            margin-top: 25px;
-            padding: 12px 30px;
-            border: none;
-            background: #c9a86a;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 30px;
-        }
+    .brand span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
 
-        .section {
-            padding: 80px 10%;
-            text-align: center;
-        }
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-        .cards {
-            display: flex;
-            gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    .menu a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2c2a27;
+    }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            width: 280px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
+    .menu a:hover {
+      color: var(--gold-dark);
+    }
 
-        footer {
-            padding: 40px;
-            text-align: center;
-            background: #111;
-            color: white;
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
 
-        @media(max-width: 768px) {
-            .hero h1 {
-                font-size: 28px;
-            }
-        }
-    </style>
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, #e0c187 100%);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(201, 168, 106, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 35px rgba(201, 168, 106, 0.34);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(22, 22, 22, 0.08);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 64px 0 32px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .hero-image,
+    .card,
+    .donate-box,
+    .gallery-card,
+    .footer-box {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+    }
+
+    .hero-card {
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 540px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(201, 168, 106, 0.13);
+      color: #7b6130;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .hero-points div {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--border);
+    }
+
+    .hero-points strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-points span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-image {
+      overflow: hidden;
+      min-height: 540px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    section {
+      padding: 32px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      max-width: 56ch;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 28px;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      gap: 20px;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+      min-height: 260px;
+      position: relative;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-card.large {
+      min-height: 540px;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(22, 22, 22, 0.55);
+      color: white;
+      backdrop-filter: blur(10px);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .donate-box {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .donate-box h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .donate-box p {
+      color: var(--muted);
+      margin-bottom: 14px;
+      max-width: 60ch;
+    }
+
+    .donate-data {
+      display: grid;
+      gap: 10px;
+    }
+
+    .donate-data div {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid var(--border);
+      font-weight: 600;
+    }
+
+    .donate-data span {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    footer {
+      padding: 32px 0 48px;
+    }
+
+    .footer-box {
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-box p {
+      color: var(--muted);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-wrap,
+      .gallery-grid,
+      .cards,
+      .donate-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .hero-image {
+        min-height: auto;
+      }
+
+      .gallery-card.large {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .menu {
+        gap: 12px;
+      }
+
+      .hero {
+        padding-top: 24px;
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .donate-box {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#fooldal">
+        <strong>Sztojka Edina</strong>
+        <span>Utolsó Padban Alapítvány</span>
+      </a>
 
-<header>
-    <div class="logo">Utolsó Pad Alapítvány</div>
-    <nav>
-        <a href="#">Főoldal</a>
-        <a href="#">Rólunk</a>
-        <a href="#">Galéria</a>
-        <a href="#">Támogatás</a>
-        <a href="#">Kapcsolat</a>
-    </nav>
-</header>
-
-<section class="hero">
-    <div>
-        <h1>Minden gyermek megérdemli az esélyt</h1>
-        <p>Sztojka Edina – Utolsó Padban Alapítvány célja, hogy valódi segítséget nyújtson a hátrányos helyzetű gyermekek számára.</p>
-        <button>Támogatom az alapítványt</button>
+      <nav class="menu">
+        <a href="#fooldal">Főoldal</a>
+        <a href="#kuldetes">Küldetés</a>
+        <a href="#galeria">Galéria</a>
+        <a href="#tamogatas">Támogatás</a>
+        <a href="#kapcsolat">Kapcsolat</a>
+      </nav>
     </div>
-</section>
+  </header>
 
-<section class="section">
-    <h2>Küldetésünk</h2>
-    <div class="cards">
-        <div class="card">
+  <main id="fooldal">
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div class="hero-card">
+          <div class="eyebrow">Aranypánt-díjas közéleti szereplő és alapító</div>
+          <h1>Minden gyermek megérdemli, hogy ne az utolsó padból induljon.</h1>
+          <p class="lead">
+            A Sztojka Edina – Utolsó Padban Alapítvány célja, hogy valódi esélyt,
+            figyelmet és támogatást adjon a gyermekeknek. Egy prémium megjelenésű,
+            hiteles felület, ahol az ügy ereje az első pillanattól érezhető.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#tamogatas">Támogatom az alapítványt</a>
+            <a class="btn btn-secondary" href="#kuldetes">Megnézem a küldetést</a>
+          </div>
+
+          <div class="hero-points">
+            <div>
+              <strong>Valódi ügy</strong>
+              <span>Gyermekekért, közösségért, esélyért.</span>
+            </div>
+            <div>
+              <strong>Hiteles jelenlét</strong>
+              <span>Emberközeli, mégis prémium megjelenés.</span>
+            </div>
+            <div>
+              <strong>Könnyű támogatás</strong>
+              <span>Az adatok gyorsan és jól láthatóan elérhetők.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80"
+            alt="Közösségi pillanat"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="kuldetes">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Küldetés, ami nem díszszöveg, hanem valódi jelenlét.</h2>
+          </div>
+          <p>
+            Az oldal célja, hogy a látogatók gyorsan megértsék, kiért és miért dolgozik
+            az alapítvány, miközben a vizuális élmény bizalmat és minőséget sugároz.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
             <h3>Esélyteremtés</h3>
-            <p>Minden gyermeknek jár a lehetőség a fejlődésre és a jobb jövőre.</p>
+            <p>
+              Olyan gyermekek támogatása, akiknek több figyelemre, több lehetőségre és
+              több kapaszkodóra van szükségük a mindennapokban.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Közösségépítés</h3>
+            <p>
+              Egy erős közösség nemcsak segít, hanem felemel. Az alapítvány ezt a
+              megtartó hátteret építi napról napra.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Valódi támogatás</h3>
+            <p>
+              Nem távoli ígéretek, hanem kézzelfogható jelenlét, amely érezhető a
+              programokban, az emberekben és a történetekben is.
+            </p>
+          </article>
         </div>
-        <div class="card">
-            <h3>Közösség</h3>
-            <p>Erős, támogató közösséget építünk a gyermekek köré.</p>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Pillanatok, amelyek mögött valódi történetek vannak.</h2>
+          </div>
+          <p>
+            Ide később Sztojka Edina és a gyermekek valódi képei kerülnek. Most még
+            ideiglenes képek vannak bent, hogy a dizájn összeálljon.
+          </p>
         </div>
-        <div class="card">
-            <h3>Segítség</h3>
-            <p>Valódi támogatást nyújtunk a mindennapokban.</p>
+
+        <div class="gallery-grid">
+          <div class="gallery-card large">
+            <img
+              src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80"
+              alt="Közösségi program"
+            />
+            <div class="gallery-caption">Közösségi programok és személyes jelenlét</div>
+          </div>
+
+          <div class="gallery-card">
+            <img
+              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80"
+              alt="Gyermekek támogatása"
+            />
+            <div class="gallery-caption">Figyelem, támogatás, fejlődés</div>
+          </div>
+
+          <div class="gallery-card">
+            <img
+              src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=900&q=80"
+              alt="Inspiráló közeg"
+            />
+            <div class="gallery-caption">Reményből épített jövőkép</div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section id="tamogatas">
+      <div class="container">
+        <div class="donate-box">
+          <div>
+            <h3>Támogatás</h3>
+            <p>
+              Minden hozzájárulás számít. A támogatásoddal a Sztojka Edina – Utolsó
+              Padban Alapítvány munkáját segíted, hogy még több gyermekhez jusson el
+              a figyelem, az esély és a valódi támogatás.
+            </p>
+            <a class="btn btn-primary" href="#kapcsolat">Kapcsolatfelvétel</a>
+          </div>
+
+          <div class="donate-data">
+            <div>
+              <span>Számlaszám</span>
+              50432466-10006368
+            </div>
+            <div>
+              <span>Bank</span>
+              Takarék Bank
+            </div>
+            <div>
+              <span>Adószám</span>
+              19313018-1-04
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kapcsolat">
+    <div class="container">
+      <div class="footer-box">
+        <div>
+          <strong>Sztojka Edina - Utolsó Padban Alapítvány</strong>
+          <p>Prémium, mobilbarát, bizalomépítő webes jelenlét.</p>
+        </div>
+        <div>
+          <p>© 2026 Minden jog fenntartva.</p>
+        </div>
+      </div>
     </div>
-</section>
-
-<footer>
-    © 2026 Sztojka Edina - Utolsó Padban Alapítvány
-</footer>
-
+  </footer>
 </body>
 </html>
