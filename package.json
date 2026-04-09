@@ -1,0 +1,12 @@
+{
+  "name": "sztojka-edina-alapitvany",
+  "version": "1.0.0",
+  "description": "Sztojka Edina - Utolsó Padban Alapítvány prémium weboldal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
