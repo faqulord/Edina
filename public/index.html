@@ -8,22 +8,22 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            /* MELEG, ORGANIKUS SZÍNPALETTA - Nincs sterilitás */
-            --bg-body: #FAF4ED;         /* Meleg homokszín alap */
-            --bg-section: #F2E3D5;      /* Kicsit sötétebb, tört bézs a szekciók elkülönítésére */
-            --primary: #D46A4C;         /* Meleg terrakotta / agyag - emberi, barátságos */
-            --primary-light: #FADED5;   /* Halvány terrakotta */
+            /* MELEG, ORGANIKUS SZÍNPALETTA */
+            --bg-body: #FAF4ED;         
+            --bg-section: #F2E3D5;      
+            --primary: #D46A4C;         
+            --primary-light: #FADED5;   
             --primary-dark: #B35237;    
-            --accent: #E89E2E;          /* Napsárga / meleg okker */
+            --accent: #E89E2E;          
             --accent-hover: #CC8722;
-            --text-dark: #3E3832;       /* Mély, meleg barnás-szürke (nem rideg fekete) */
-            --text-muted: #7A726A;      /* Meleg szürke */
+            --text-dark: #3E3832;       
+            --text-muted: #7A726A;      
             --white: #FFFFFF;
             
             --shadow-sm: 0 4px 15px rgba(212, 106, 76, 0.08);
@@ -39,13 +39,13 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .logo { font-family: 'Outfit', sans-serif; font-weight: 800; line-height: 1.15; }
+        h1, h2, h3, h4, .logo { font-family: 'Outfit', sans-serif; font-weight: 800; line-height: 1.2; }
 
-        .container { width: min(1200px, 90%); margin: 0 auto; relative; }
+        .container { width: min(1200px, 90%); margin: 0 auto; position: relative; }
 
         /* --- Organikus Háttérformák (Blobs) --- */
         .blob { position: absolute; z-index: -1; filter: blur(60px); opacity: 0.6; }
@@ -123,7 +123,7 @@
             background: var(--accent); opacity: 0.3; z-index: -1; border-radius: 10px;
         }
 
-        .hero p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 40px; max-width: 90%; line-height: 1.7; }
+        .hero p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 40px; max-width: 90%; }
         .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
 
         .hero-img-wrapper { position: relative; padding: 15px; }
@@ -139,9 +139,8 @@
             border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px;
         }
 
-        /* --- Misszió (Színezett háttérrel) --- */
+        /* --- Misszió --- */
         .section-mission { padding: 100px 0; background-color: var(--bg-section); position: relative; }
-        /* Díszítő hullám a tetején */
         .wave-top { position: absolute; top: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; }
         .wave-top svg { display: block; width: calc(130% + 1.3px); height: 50px; }
         .wave-top .shape-fill { fill: var(--bg-body); }
@@ -163,14 +162,14 @@
         .mission-card h3 { font-size: 1.4rem; margin-bottom: 16px; color: var(--text-dark); }
         .mission-card p { color: var(--text-muted); font-size: 1rem; }
 
-        /* --- Történet Rész (Meleg, sötétebb kártya) --- */
+        /* --- Történet Rész & Bővített Szöveg --- */
         .section-padding { padding: 100px 0; }
+        
         .story-section {
             background: var(--primary); color: var(--white); padding: 70px 60px;
             border-radius: var(--radius-xl); position: relative; overflow: hidden;
-            box-shadow: 0 30px 60px rgba(212, 106, 76, 0.2);
+            box-shadow: 0 30px 60px rgba(212, 106, 76, 0.2); margin-bottom: 60px;
         }
-        /* Finom minta a terrakotta kártyán */
         .story-section::before {
             content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
             background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
@@ -178,8 +177,19 @@
         }
 
         .story-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 50px; align-items: center; position: relative; z-index: 2; }
-        .story-quote { font-size: 2rem; font-family: 'Outfit', sans-serif; line-height: 1.3; font-weight: 600; }
-        .story-text { color: rgba(255,255,255,0.9); font-size: 1.05rem; }
+        .story-quote { font-size: clamp(1.8rem, 3vw, 2.2rem); font-family: 'Outfit', sans-serif; line-height: 1.3; font-weight: 600; }
+        .story-text { color: rgba(255,255,255,0.9); font-size: 1.1rem; line-height: 1.8; }
+
+        /* Új, olvasható marketing szöveg blokk */
+        .rich-text-block {
+            max-width: 800px; margin: 0 auto; background: var(--white);
+            padding: 60px; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-light);
+        }
+        .rich-text-block h3 { color: var(--primary-dark); font-size: 2rem; margin-bottom: 25px; }
+        .rich-text-block p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px; line-height: 1.8; }
+        .rich-text-block p:last-child { margin-bottom: 0; }
+        .rich-text-block strong { color: var(--text-dark); font-weight: 700; }
 
         /* --- Galéria --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 240px; gap: 20px; }
@@ -192,11 +202,10 @@
         .img-large { grid-column: span 2; grid-row: span 2; }
         .img-wide { grid-column: span 2; }
 
-        /* --- Adományozás (Barátságos, színes doboz) --- */
+        /* --- Adományozás (CTA) --- */
         .donation-block {
             background: var(--white); border-radius: var(--radius-xl); padding: 60px;
             box-shadow: var(--shadow-lg); text-align: center; border: 3px solid var(--primary-light);
-            position: relative; overflow: hidden;
         }
         .donation-block h2 { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--primary-dark); }
         .donation-block p { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 16px auto 0; }
@@ -217,7 +226,7 @@
         @media (max-width: 992px) {
             .hero { padding-top: 130px; text-align: center; }
             .hero-grid, .story-grid { grid-template-columns: 1fr; gap: 40px; }
-            .hero h1 span::after { display: none; } /* Mobilon a kiemelés lehet zavaró */
+            .hero h1 span::after { display: none; } 
             .hero p { margin: 0 auto 30px; }
             .hero-btns { justify-content: center; }
             .hero-img-wrapper { max-width: 450px; margin: 20px auto 0; }
@@ -226,6 +235,7 @@
             .hamburger { display: block; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
             .story-section { padding: 50px 30px; }
+            .rich-text-block { padding: 40px 30px; }
         }
         
         @media (max-width: 600px) {
@@ -236,6 +246,8 @@
             .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; }
             .img-large, .img-wide { grid-column: span 1; grid-row: span 1; }
             .story-quote { font-size: 1.6rem; text-align: center; }
+            .rich-text-block { padding: 30px 20px; }
+            .rich-text-block h3 { font-size: 1.6rem; }
             .donation-block { padding: 40px 20px; }
             .data-item { padding: 20px; }
         }
@@ -253,7 +265,7 @@
                 <span>Utolsó Padban Alapítvány</span>
             </a>
             <div class="nav-links">
-                <a href="#kik-vagyunk">Küldetésünk</a>
+                <a href="#kik-vagyunk">Mit teszünk?</a>
                 <a href="#tortenet">A Történetünk</a>
                 <a href="#galeria">Pillanatok</a>
                 <a href="#tamogatas" class="btn btn-accent" style="padding: 10px 24px; font-size: 0.95rem;">Támogatás</a>
@@ -267,7 +279,7 @@
     </header>
 
     <div class="mobile-menu">
-        <a href="#kik-vagyunk">Küldetésünk</a>
+        <a href="#kik-vagyunk">Mit teszünk?</a>
         <a href="#tortenet">A Történetünk</a>
         <a href="#galeria">Pillanatok</a>
         <a href="#tamogatas" class="btn btn-accent">Támogatás</a>
@@ -279,10 +291,10 @@
                 <div data-aos="fade-up">
                     <span class="eyebrow">Remény. Esély. Jelenlét.</span>
                     <h1>Hogy egyetlen gyerek se maradjon az <span>utolsó padban</span>.</h1>
-                    <p>Az alapítvány célja, hogy megadjuk a kezdőlökést, a figyelmet és az elfogadást azoknak a gyerekeknek, akiket a rendszer könnyen szem elől téveszt. Valódi emberi jelenléttel segítünk.</p>
+                    <p>Minden gyermek rejt egy csodát, csak van, akinek a hangja elveszik a zajban. Célunk, hogy megtaláljuk, felemeljük és valódi, emberi jelenléttel támogassuk azokat a fiatalokat, akiket a rendszer sokszor észre sem vesz.</p>
                     <div class="hero-btns">
                         <a href="#tamogatas" class="btn btn-accent">Mellétek állok</a>
-                        <a href="#kik-vagyunk" class="btn btn-outline">Ismerj meg minket</a>
+                        <a href="#tortenet" class="btn btn-outline">Ismerd meg a miértet</a>
                     </div>
                 </div>
                 <div class="hero-img-wrapper" data-aos="zoom-in" data-aos-delay="150">
@@ -291,7 +303,7 @@
                         <div class="icon">♥</div>
                         <div>
                             <strong style="display:block; font-family: 'Outfit'; font-size: 1.15rem; color: var(--text-dark);">Valódi törődés</strong>
-                            <span style="font-size: 0.85rem; color: var(--text-muted)">Nem csak szavakban.</span>
+                            <span style="font-size: 0.85rem; color: var(--text-muted)">Ott vagyunk velük.</span>
                         </div>
                     </div>
                 </div>
@@ -304,52 +316,66 @@
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
-
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2>Mit teszünk a gyakorlatban?</h2>
                     <p style="color: var(--text-muted); font-size: 1.1rem;">Nem távolról osztunk tanácsokat. Ott vagyunk a közösségekben, figyelünk, mentorálunk és eszközöket adunk a kezükbe.</p>
                 </div>
-                
                 <div class="grid-3">
                     <div class="mission-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="card-icon-wrap">01</div>
                         <h3>Észrevesszük őket</h3>
-                        <p>Kereszttüzébe kerülnek azok a fiatalok, akik tehetségesek, vagy egyszerűen csak szeretetre vágynak, de a háttérben maradtak.</p>
+                        <p>Megkeressük azokat a fiatalokat, akik tehetségesek, intelligensek, vagy egyszerűen csak szeretetre vágynak, de a háttérben maradtak a figyelemhiány miatt.</p>
                     </div>
                     <div class="mission-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="card-icon-wrap">02</div>
                         <h3>Kapaszkodót adunk</h3>
-                        <p>Fizikai és érzelmi támogatást, mentorálást biztosítunk. Közösséget építünk, ahová bátran fordulhatnak segítségért.</p>
+                        <p>Fizikai és érzelmi támogatást, mentorálást biztosítunk. Nem csak füzeteket veszünk, hanem egy megtartó közösséget építünk köréjük.</p>
                     </div>
                     <div class="mission-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="card-icon-wrap">03</div>
                         <h3>Jövőképet építünk</h3>
-                        <p>A hátrányos helyzet nem szabad, hogy ítélet legyen. Megmutatjuk a kiutat, és végigkísérjük őket az odavezető úton.</p>
+                        <p>A szegénység vagy a rossz családi háttér nem ítélet. Megmutatjuk a kiutat, új perspektívákat nyitunk, és végigkísérjük őket az úton.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="tortenet" class="section-padding container">
-            <div class="story-section" data-aos="fade-up">
-                <div class="story-grid">
-                    <div class="story-quote">
-                        "A legnagyobb ajándék, amit egy gyereknek adhatunk, az a figyelem és a hit, hogy ő is számít."
-                    </div>
-                    <div class="story-text">
-                        <p style="margin-bottom: 20px;">Sztojka Edina saját útján tapasztalta meg, mit jelent az akarat és a külső támogatás ereje. Az Utolsó Padban Alapítvány nem egy steril szervezet, hanem szívből jövő misszió.</p>
-                        <p>Célunk, hogy a reménytelenséget felváltsa a tenni akarás, és azok a gyerekek, akik ma még az "utolsó padban" húzzák meg magukat, holnap bátran álljanak a saját életük színpadára.</p>
+        <section id="tortenet" class="section-padding" style="background-color: var(--bg-body);">
+            <div class="container">
+                
+                <div class="story-section" data-aos="fade-up">
+                    <div class="story-grid">
+                        <div class="story-quote">
+                            "A legnagyobb ajándék, amit egy gyereknek adhatunk, az a figyelem és a hit, hogy ő is számít."
+                        </div>
+                        <div class="story-text">
+                            <p style="margin-bottom: 20px;"><strong>Sztojka Edina</strong> saját útján tapasztalta meg, mit jelent az akarat és a külső támogatás ereje. Megélte, milyen lentről indulni, és tudja, hogy a legmélyebb pontokról is van felemelkedés, ha akad valaki, aki hisz bennünk.</p>
+                            <p>Az Utolsó Padban Alapítvány nem egy irodából irányított, arctalan szervezet. Ez egy szívből jövő misszió, ami a valóságból táplálkozik. Edina személyes küldetése, hogy azt a reményt és kapaszkodót adja tovább a mai gyerekeknek, amire annak idején talán neki is a legnagyobb szüksége lett volna.</p>
+                        </div>
                     </div>
                 </div>
+
+                <div class="rich-text-block" data-aos="fade-up">
+                    <h3>Kik ülnek az utolsó padban?</h3>
+                    <p>Ha bemész egy átlagos osztályterembe, a hátsó sorokban ritkán ülnek a leghangosabb, legmagabiztosabb diákok. Az utolsó padban sokszor a csend lakik. Ott ülnek azok a gyerekek, akik <strong>nem mernek szólni</strong>, akiknek otthon nincs kivel megírni a leckét, akik talán zseniálisan rajzolnak vagy számolnak, de sosem kapnak dicséretet.</p>
+                    
+                    <p>Ezek a fiatalok láthatatlanok a rendszer számára. Nem azért, mert nem értékesek, hanem mert a mindennapi küzdelmek, a szegénység vagy a családi problémák árnyékában a tehetségük nem tud kivirágozni. Hiányzik mögülem a <strong>támogató háttér, egy jó szó, egy biztató tekintet.</strong></p>
+
+                    <h3 style="margin-top: 40px;">Miért jött létre az alapítvány?</h3>
+                    <p>Az <strong>Utolsó Padban Alapítvány</strong> azért született meg, hogy áttörje ezt a láthatatlanságot. Mi nem csak krízishelyzeteket kezelünk, hanem megelőzünk. Hiszünk abban, hogy a sorsfordító pillanatok sokszor apróságokban rejlenek: egy őszinte beszélgetésben, egy megvásárolt sportfelszerelésben, vagy abban a mondatban, hogy <em>"Képes vagy rá."</em></p>
+                    
+                    <p>Célunk, hogy a reménytelenséget felváltsa a tenni akarás. Azt akarjuk, hogy azok a gyerekek, akik ma még lehajtott fejjel ülnek leghátul, holnap <strong>bátran, önbizalommal telve álljanak a saját életük színpadára.</strong> Mert minden gyermek megérdemli az esélyt, hogy megmutassa a világnak, mi rejlik benne.</p>
+                </div>
+
             </div>
         </section>
 
-        <section id="galeria" class="section-padding">
+        <section id="galeria" class="section-padding" style="padding-top: 50px;">
             <div class="container">
                 <div class="section-header" data-aos="fade-up" style="margin-bottom: 50px;">
                     <h2>Sorsok és mosolyok</h2>
-                    <p style="color: var(--text-muted)">Ezek a képek a mindennapi munkánk lenyomatai. Őszinte pillanatok a közös építkezésből.</p>
+                    <p style="color: var(--text-muted)">Nem beállított képek, hanem a mindennapi munkánk lenyomatai. Őszinte pillanatok a közös építkezésből.</p>
                 </div>
                 
                 <div class="gallery-grid">
@@ -368,7 +394,7 @@
                 <div class="donation-block" data-aos="fade-up">
                     <h2>Közösen tehetünk a legtöbbet!</h2>
                     <p>
-                        Minden apró segítség hatalmas lépés egy gyerek életében. Állj mellénk, ajánld fel adód 1%-át, vagy támogass minket közvetlenül, hogy ne maradjanak egyedül!
+                        A figyelem és a segítség ingyen van, de a programokhoz, az eszközökhöz és a mindennapi munkához összefogásra van szükségünk. Állj mellénk, ajánld fel adód 1%-át, vagy támogass minket közvetlenül, hogy senki ne maradjon magára!
                     </p>
                     
                     <div class="donation-data">
@@ -382,7 +408,7 @@
                         </div>
                     </div>
 
-                    <p style="font-weight: 700; color: var(--primary); margin-bottom: 25px; font-size: 1.1rem;">Hálásan köszönjük, hogy hiszel bennünk!</p>
+                    <p style="font-weight: 700; color: var(--primary); margin-bottom: 25px; font-size: 1.1rem;">Hálásan köszönjük, hogy hiszel bennünk és a gyerekekben!</p>
                     <a href="mailto:info@utolsopadban.hu" class="btn btn-accent">Lépj velünk kapcsolatba</a>
                 </div>
             </div>
@@ -398,22 +424,19 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Animációk inicializálása
         AOS.init({ duration: 800, once: true, offset: 80 });
 
-        // Navigáció árnyékolása görgetéskor
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 20) {
                 header.style.boxShadow = '0 4px 20px rgba(212, 106, 76, 0.08)';
-                header.style.background = 'rgba(250, 244, 237, 0.95)';
+                header.style.background = 'rgba(250, 244, 237, 0.98)';
             } else {
                 header.style.boxShadow = 'none';
                 header.style.background = 'rgba(250, 244, 237, 0.85)';
             }
         });
 
-        // Mobil menü kezelése
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-menu a');
